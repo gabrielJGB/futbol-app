@@ -1,0 +1,25 @@
+{
+    "version":"1.0.1",
+    "name": "Nombre App",
+    "short_name": "App",
+    "description": "Descripcion de la aplicación",
+    "theme_color": "#004b7a",
+    "background_color" : "#004b7a",
+    "icons": [
+      {
+        "src": "pwa-128x128.png",
+        "sizes": "128x128",
+        "type": "image/png"
+      },
+      {
+        "src": "pwa-256x256.png",
+        "sizes": "256x256",
+        "type": "image/png"
+      },
+      {
+        "src": "pwa-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }

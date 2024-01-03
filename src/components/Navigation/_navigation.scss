@@ -1,0 +1,38 @@
+.navigation_container{
+    @include flex_config(flex,row,space-between,center,20px);
+    width: 30%;
+    margin: 20px;
+    
+
+    .arrow{
+        padding:15px 20px;
+        background-color: $background-1;
+        
+        box-shadow: 0 0 10px black;
+        border:solid 1px #464646;
+        border-radius: 5px;
+        cursor: pointer;
+        img{
+            width:20px;
+            height:20px;
+            filter:invert(0.9)
+        }
+
+        &:hover{
+            background-color: rgb(49, 49, 49);
+            
+        }
+    }
+    
+}
+
+@media screen and (max-width:800px){
+    .navigation_container{
+        
+        width:99%;
+        
+    }  
+    .arrow:active{
+        background-color: unset;
+    }  
+}

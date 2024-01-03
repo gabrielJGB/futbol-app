@@ -1,0 +1,7 @@
+.home_container{    
+    @include flex_config(flex,column,center,center,0);
+    
+    padding:5px;
+    color:$color_2;
+}
+

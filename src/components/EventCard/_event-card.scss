@@ -1,0 +1,75 @@
+.event-card_container {
+
+    @include flex_config(flex, column, center, center, 0);
+    width: -webkit-fill-available;
+    padding: 5px;
+    margin: 0 7px 7px 7px;
+    border-radius: 5px;
+    background-color: rgb(51 51 51);
+
+    &:hover {
+        background-color: rgb(61, 61, 61);
+        cursor: pointer
+    }
+
+
+    .match-container {
+        @include flex_config(flex, row, space-between, center, 5px);
+        width: -webkit-fill-available;
+
+
+        // margin:0 5px;
+        // padding:5px;
+        // border-radius: 5px;
+    }
+
+
+    .team {
+        @include flex_config(flex, column, center, center, 0);
+        width: 40%;
+
+        .team-info {
+            @include flex_config(flex, column, center, center, 5px);
+
+        }
+
+        .team-name {
+            text-align: center;
+
+        }
+
+    }
+
+    .score-container {
+
+        .score {
+            @include flex_config(flex, row, center, unset, 10px);
+
+            margin-top: 10px;
+            font-size: 30px;
+            .winner{
+                color:#8cffd1;
+            }
+        }
+
+        .status {
+            margin: 2px auto;
+            background-color: rgb(78, 78, 78);
+            width: max-content;
+            padding: 2px 3px;
+            border-radius: 4px;
+            font-size: 15px;
+        }
+
+        .playing {
+            background-color: rgb(163, 0, 0);
+        }
+    }
+}
+
+
+@media screen and (max-width:800px) {
+    .team-name {
+        font-size: 14px;
+    }
+}
