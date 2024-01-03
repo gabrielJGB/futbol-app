@@ -1,0 +1,22 @@
+.leagues-names_container{
+
+    @include flex_config(flex,row,center,center,7px);
+    flex-wrap: wrap;
+    width:40%;
+    margin-bottom:15px;
+    .league-name{
+        background-color: rgb(12, 12, 12);
+        cursor: pointer;
+        border-radius: 5px;
+        padding:7px;
+
+    }
+
+}
+
+@media screen and (max-width:800px){
+
+    .leagues-names_container{
+        width:97%;
+    }
+}

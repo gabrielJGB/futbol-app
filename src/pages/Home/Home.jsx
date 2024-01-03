@@ -22,6 +22,7 @@ Estructura Home
 import React, { useEffect } from 'react'
 import { useContext } from 'react'
 import LeagueEvents from '../../components/LeagueEvents/LeagueEvents'
+import LeaguesNames from '../../components/LeagueNames/LeaguesNames'
 import Navigation from '../../components/Navigation/Navigation'
 import Spinner from '../../components/Spinner/Spinner'
 import { DataContext } from '../../context/DataContext'
@@ -30,9 +31,7 @@ const Home = () => {
 
   const data = useContext(DataContext)
 
-  useEffect(() => {
-    console.log(data.leagues)
-  }, [])
+
   
 
 
@@ -41,6 +40,8 @@ const Home = () => {
     <div className="home_container">
       
       <Navigation />
+
+      <LeaguesNames />
       
 
       {

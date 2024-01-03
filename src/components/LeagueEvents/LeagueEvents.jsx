@@ -23,6 +23,7 @@ const LeagueEvents = (props) => {
       <div className='league_menu'>
         <div> Tablas</div>
         <div>Fixture</div>
+        <div>Equipos</div>
       </div>
     </div>
   )

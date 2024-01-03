@@ -10,7 +10,9 @@ export const DataContext = createContext({
     selected_date:null, 
     set_selected_date:()=>{},
     date:null,
-    set_date:()=>{}
+    set_date:()=>{},
+    leagues_names:null, 
+    set_leagues_names:()=>{}
 })
 
 export function DataProvider({ children }) {
@@ -18,15 +20,18 @@ export function DataProvider({ children }) {
     const [leagues, set_leagues] = useState(true)
     const [selected_date, set_selected_date] = useState(false)
     const [date,set_date] = useState(new Date())
+    const [leagues_names, set_leagues_names] = useState(false)
 
     useEffect(() => {
         let num = new Date().getTime()
-        // let link = "https://site.api.espn.com/apis/site/v2/sports/soccer/all/scoreboard?region=ar&lang=es&contentorigin&date=" + format_date(date)
-        
         let link = "https://site.web.api.espn.com/apis/v2/scoreboard/header?sport=soccer&lang=es&region=ar&dates="+ format_date(date) +"&="+ num
         set_loading(true)
         fetch_json(link)
-            .then(resp => set_leagues(resp.sports[0].leagues))
+            .then(resp => {
+                set_leagues(resp.sports[0].leagues)
+                set_leagues_names(resp.sports[0].leagues.map(league => (league.shortName)))
+            })
+
             .finally(() => set_loading(false))
         
     }, [date])
@@ -42,6 +47,7 @@ export function DataProvider({ children }) {
         leagues, set_leagues,
         selected_date, set_selected_date,
         date,set_date,
+        leagues_names, set_leagues_names
 
 
 
