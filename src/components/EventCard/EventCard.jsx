@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 import ball from '../../assets/ball.png'
 
 const IMG_SIZE_1 = 50;
@@ -90,7 +91,7 @@ const EventCard = (props) => {
 
         <div className="scorers-container">
 
-{/* 
+          {/* 
           {
             props.team.goalieSummary.map((elem,i)=>(
 
@@ -101,14 +102,14 @@ const EventCard = (props) => {
             ))
           } */}
 
-        
+
         </div>
       </div>
     )
   }
 
   const Score = (props) => {
-    
+
 
     return (
       <div className="score-container">
@@ -119,17 +120,27 @@ const EventCard = (props) => {
         </div>
         <div className={`status ${is_playing(props.status) && "playing"}`} >
           {
-            get_status(props.status)?.replace("Finalizado","Final")
+            get_status(props.status)?.replace("Finalizado", "Final")
           }
         </div>
       </div>
     )
   }
 
-  return (
-    <div className='event-card_container'>
+  const navigate = useNavigate()
 
-      <div className="match-container">
+  return (
+
+    <div
+      className='event-card_container'
+      onClick={() => navigate(`match?id=${props.match.id}`)}
+      
+    >
+ 
+      <div
+        className="match-container"
+
+      >
         <Team team={props.match.competitors[1]} />
         <Score score={props.match.competitors} status={props.match.fullStatus} />
         <Team team={props.match.competitors[0]} />

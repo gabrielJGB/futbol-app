@@ -2,7 +2,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import DataProvider from './context/DataContext'
 
 import Home from './pages/Home/Home'
+
 import Layout from './pages/Layout'
+import Match from './pages/Match/Match'
 
 const App = () => {
 
@@ -13,7 +15,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} /> 
-            {/* <Route path="/ruta" element={</Componente>}></Routes> */}
+            <Route path="/match" element={<Match />} />
               
           </Route>
         </Routes>

@@ -1,0 +1,108 @@
+.match_container{
+    @include flex_config(flex,column,center,center,0);
+    
+    margin:0 auto;
+    width:50%;
+    // .header{
+        // @include flex_config(flex,column,center,center,0);
+        // background-color: rgb(20, 20, 20);
+        // color:white;
+        // padding:5px 0;
+        // width:100%;
+
+        .league-name{
+            width: 100%;
+            font-size: 18px;
+            text-align: center;
+            background-color:$background-2;
+            padding-top: 5px;
+            color:rgba(255, 255, 255, 0.548)
+        }
+
+        .header-top{
+            @include flex_config(flex,row,space-evenly,flex-start,0);
+            padding: 8px 0;
+            background-color:rgb(39 50 56);
+            
+            color:white;
+            position: sticky;
+            top:0;
+            width:100%;
+            
+            .team{
+                @include flex_config(flex,column,center,center,5px);
+                width:33%;
+                .name{
+                    text-align: center;
+                    font-size: 17px
+                }
+
+            }
+        }
+        .score-container{
+            @include flex_config(flex,column,center,center,5px);
+            width:33%;
+            .score span{
+                font-size: 35px;
+            }
+            .status{
+                padding:1px 4px;
+                border-radius: 4px;
+                background-color: rgb(78, 78, 78);
+                color:white;
+                font-size: 14px;
+                
+            }
+        }
+        .header-bottom{
+            @include flex_config(flex,column,space-between,normal,0);
+            width:100%;
+            font-size: 12px;
+            padding:5px 0;
+            background-color: rgb(39 50 56);
+            // border-top: solid 1px rgb(22 27 30);
+            
+            .detail{
+                @include flex_config(flex,row,space-between,center,0px);
+                // background-color: rgb(27, 27, 27);
+                margin:1px 0;
+                padding:1px 0;
+            }
+            .player{
+                @include flex_config(flex,row,center,center,0);
+                
+                width: 45%;
+                padding:1px 0;
+                
+                color:rgb(199, 199, 199);
+                .icon{
+                    margin-right: 4px;
+                }
+            }
+            .minute{
+                padding:1px 0;
+                
+                text-align: center;
+                color: rgb(214, 214, 214);
+                width:10%
+            }
+            .box{
+                height: 100%;
+                width: 45%;
+            }
+            .player,.minute{
+                background-color: rgb(29 40 47)
+            }
+
+        }
+     
+    
+
+
+}
+
+@media screen and (max-width:800px){
+    .match_container{
+        width:100%;       
+    }
+}

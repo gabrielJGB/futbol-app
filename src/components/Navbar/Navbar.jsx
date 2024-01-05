@@ -3,7 +3,7 @@ import React from 'react'
 
 const Navbar = () => {
   return (
-   <div className='navbar_container'>Futbol 360</div>
+   <div className='navbar_container'>Fútbol 11</div>
   )
 }
 

@@ -6,9 +6,9 @@
 
     .arrow{
         padding:15px 20px;
-        background-color: $background-1;
+        background-color: $background-3;
         
-        box-shadow: 0 0 10px black;
+        // box-shadow: 0 0 10px black;
         border:solid 1px #464646;
         border-radius: 5px;
         cursor: pointer;
@@ -19,8 +19,14 @@
         }
 
         &:hover{
-            background-color: rgb(49, 49, 49);
+            background-color: $background-2;
             
+        }
+    }
+    .middle{
+        @include flex_config(flex,column,center,center,6px);
+        input{
+            padding:2px
         }
     }
     
