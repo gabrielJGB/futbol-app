@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import ball from '../../assets/ball.png'
+import escudo from '../../assets/escudo.png'
 
 const IMG_SIZE_1 = 50;
 const IMG_SIZE_2 = 10;
@@ -58,7 +59,14 @@ const EventCard = (props) => {
   }
 
 
-
+  const get_escudo = (elem)=>{
+    
+    if("logo" in elem && elem.logo!= ""){
+        return <img src={elem.logo} alt="Escudo" width={IMG_SIZE_1} height={IMG_SIZE_1} /> 
+    }
+    return <img src={escudo} alt="Escudo" width={IMG_SIZE_1} height={IMG_SIZE_1} /> 
+    
+}
 
   const Team = (props) => {
 
@@ -76,14 +84,16 @@ const EventCard = (props) => {
             props.team.order ?
               <>
 
-                <img src={props.team.logo} alt="" width={IMG_SIZE_1} height={IMG_SIZE_1} />
+                {/* <img src={props.team.logo} alt="" width={IMG_SIZE_1} height={IMG_SIZE_1} />
+                 */}
+                 {get_escudo(props.team)}
                 <div className="team-name">{props.team.displayName}</div>
               </>
               :
               <>
 
                 <div className="team-name">{props.team.displayName}</div>
-                <img src={props.team.logo} alt="" width={IMG_SIZE_1} height={IMG_SIZE_1} />
+                {get_escudo(props.team)}
               </>
 
           }

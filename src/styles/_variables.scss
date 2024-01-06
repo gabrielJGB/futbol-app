@@ -1,7 +1,27 @@
-$background-1:rgb(48 48 48);
-$background-2:rgb(39 50 56);
-$background-3:rgb(29 40 47);
-$background-4:rgb(18, 23, 27);
+
+
+// $background-1:#131a21;
+// $background-3:#222d3b;
+// $background-2:#1a242e;
+
+
+/*
+saturate( $base-color, 20% )
+desaturate( $base-color, 20% )
+
+darken( $base-color, 10% )
+lighten( $base-color, 10% )
+*/
+
+// $base_color:rgb(73, 96, 139);
+$base_color:rgb(75, 105, 150);
+
+$background-1:darken($base-color,30%);
+$background-2:darken($base-color,28%);
+$background-3:darken($base-color,23%);
+$background-4:darken($base-color,12%);
+
+
 
 $color-1:rgb(255, 255, 255);
 $color-2:rgb(238, 238, 238);

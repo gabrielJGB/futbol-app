@@ -1,12 +1,11 @@
 .league-events_container {
     @include flex_config(flex, column, center, center, 0);
     width: 40%;
-    border: solid 1px rgb(57, 79, 92);
-    border-radius: 3px;
+    // border: solid 1px #000000;
+    border-radius: 5px;
     margin-bottom: 25px;
     background-color: $background-3;
-    box-shadow: 0 0 10px rgb(26, 35, 41);
-
+    box-shadow: 0 1px 4px black;
     .league-header {
         @include flex_config(flex, row, center, center, 0);
         width: 97%;
@@ -42,7 +41,7 @@
             padding: 8px;
             cursor: pointer;
             &:hover{
-                background-color: rgb(51 51 51);
+                // background-color: rgb(51 51 51);
             }
         }
     }

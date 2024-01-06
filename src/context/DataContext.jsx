@@ -52,7 +52,7 @@ export function DataProvider({ children }) {
 
         Carga la pagina
         Fetch inmediato con la fecha de hoy
-        Seteo intervalo inmediatamente
+        Seteo intervalo 
 
         Cambia de fecha
         Limpio intervalo
@@ -88,10 +88,10 @@ useEffect(() => {
            
 
 
-    fetch_date_events()
-    interval = setInterval(() => {
-        fetch_date_events()
-    }, 10000);
+    // fetch_date_events()
+    // interval = setInterval(() => {
+    //     fetch_date_events()
+    // }, 10000);
 
 
 }, [])

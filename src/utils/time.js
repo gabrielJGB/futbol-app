@@ -1,9 +1,9 @@
 const format_date = (fecha_num) => {
   let fecha = new Date(fecha_num)
 
- 
- 
- 
+
+
+
   return String(fecha.getFullYear()).padStart(2, "0") + String((fecha.getMonth() + 1)).padStart(2, "0") + String(fecha.getDate()).padStart(2, "0")
 }
 
@@ -21,6 +21,8 @@ function convert_to_timestamp(fecha) {
 
 
 function get_time_selected(timestamp) {
+
+  if(timestamp != ""){
   const fecha = new Date(timestamp);
   const hoy = new Date();
   const ayer = new Date(hoy);
@@ -28,21 +30,23 @@ function get_time_selected(timestamp) {
   const mañana = new Date(hoy);
   mañana.setDate(hoy.getDate() + 1);
 
-  
+
   const formatearParaComparacion = (fecha) => fecha.toISOString().split('T')[0];
 
-  
+
   if (formatearParaComparacion(fecha) === formatearParaComparacion(hoy)) {
-      return 'Hoy';
+    return 'Hoy';
   } else if (formatearParaComparacion(fecha) === formatearParaComparacion(ayer)) {
-      return 'Ayer';
+    return 'Ayer';
   } else if (formatearParaComparacion(fecha) === formatearParaComparacion(mañana)) {
-      return 'Mañana';
+    return 'Mañana';
   } else {
-      
-      const dias = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
-      return `${dias[fecha.getDay()]} ${fecha.getDate()}`;
+
+    const dias = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+    const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+    return `${dias[fecha.getDay()].slice(0,3)} ${fecha.getDate()}/${fecha.getMonth()+1}/${String(fecha.getFullYear()).slice(2)}`;
   }
+}
 }
 export {
   format_date,

@@ -1,44 +1,78 @@
 .navigation_container{
-    @include flex_config(flex,row,space-between,center,20px);
-    width: 30%;
-    margin: 20px;
+    @include flex_config(flex,column,center,center,0);
+    width:100%;
+    margin-bottom: 10px;
+    position: sticky;
+    top:0;
+
+}
+
+.navigation_main{
+    @include flex_config(flex,row,space-between,center,0);
+    width: 40%;
+    border-radius: 5px;
+    background-color: $background-3;
+    box-shadow: 0 1px 4px black;
     
-
-    .arrow{
-        padding:15px 20px;
-        background-color: $background-3;
-        
-        // box-shadow: 0 0 10px black;
-        border:solid 1px #464646;
-        border-radius: 5px;
+    div{
+        @include flex_config(flex,row,center,center,0);
         cursor: pointer;
-        img{
-            width:20px;
-            height:20px;
-            filter:invert(0.9)
-        }
-
+        min-height: 40px;
+        color:white;
+        font-size: 15px;
+        width:33.33%;
         &:hover{
-            background-color: $background-2;
             
         }
     }
-    .middle{
-        @include flex_config(flex,column,center,center,6px);
-        input{
-            padding:2px
-        }
+    .center{
+        border-bottom: solid 2px rgba(255, 255, 255, 0.719);
     }
     
 }
 
-@media screen and (max-width:800px){
-    .navigation_container{
+.navigation_date-input{
+    @include flex_config(none,row,center,center,6px);
+    width:40%;
+    
+    padding:12px 0;
+    input{
+        width:25%;
+        padding:5px;
+        border-radius: 5px;
+        text-align: center;
+        cursor:pointer;
+        border:0;
         
-        width:99%;
+        color:white !important;
+        font-size: 17px;   
+        outline:none;
+    }
+    .date-btn{
+        background-color: #334459;
+        border:0;
+        cursor:pointer;
+        color:white;
+        width: 24%;
+        padding:8px 0;
+        border-radius: 5px;
+    }
+}
+
+@media screen and (max-width:800px){
+    .navigation_main{
+        
+        width:100%;
+        div{
+            font-size: 14px;
+        }
+        div:hover{
+            background-color: unset;
+
+        }
         
     }  
-    .arrow:active{
+    .arrow:hover{
         background-color: unset;
     }  
 }

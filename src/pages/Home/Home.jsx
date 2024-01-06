@@ -41,7 +41,9 @@ const Home = () => {
       
       <Navigation />
 
-      <LeaguesNames />
+      
+
+      {/* <LeaguesNames /> */}
       
 
       {
