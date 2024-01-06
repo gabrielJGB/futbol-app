@@ -21,8 +21,9 @@
         color:white;
         font-size: 15px;
         width:33.33%;
+        transition: all 0.2s;
         &:hover{
-            
+            background-color: $background-2;
         }
     }
     .center{

@@ -8,7 +8,8 @@
     background-color: $background-2;
 
     &:hover {
-        background-color: rgb(43 55 71);
+        transition: all 0.2s;
+        background-color: $background-1;
         cursor: pointer
     }
 
