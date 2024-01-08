@@ -50,6 +50,8 @@ const Match = () => {
 
             <MatchHeader header_info={header_info}/>
             <MatchNavigation />
+
+            
             
 
         </div>

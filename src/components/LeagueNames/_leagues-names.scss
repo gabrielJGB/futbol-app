@@ -3,13 +3,20 @@
     @include flex_config(flex,row,center,center,7px);
     flex-wrap: wrap;
     width:40%;
-    margin-bottom:15px;
+    margin-bottom:10px;
     .league-name{
-        background-color: rgb(12, 12, 12);
+        background-color: $background-3;
         cursor: pointer;
         border-radius: 5px;
-        padding:7px;
-
+        font-size: 15px;
+        padding:5px;
+        transition: all 0.2s;
+        border:solid 2px $background-4;
+    }
+    .selected{
+        color:$background-2;
+        border:solid 2px $background-4;
+        background-color: rgb(217, 230, 255);
     }
 
 }

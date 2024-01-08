@@ -40,12 +40,17 @@
             }
 
             .status {
-                padding: 2px 4px;
+                padding: 4px;
                 border-radius: 4px;
-                background-color: rgb(66, 66, 66);
+                background-color: rgb(27, 27, 27);
                 color: white;
                 font-size: 14px;
-
+            }
+            .playing{
+                background-color: rgb(148, 0, 0);
+            }
+            .winner{
+                color:#8cffd1;
             }
         }
     }

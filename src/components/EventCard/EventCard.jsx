@@ -36,7 +36,7 @@ const EventCard = (props) => {
     } else if (status === "STATUS_SCHEDULED") {
       return format_time(elem.type.detail)
     } else if (status === "STATUS_FULL_TIME") {
-      return "Finalizado"
+      return "Final"
     } else if (status === "STATUS_POSTPONED") {
       return "Suspendido"
     } else if (status === "STATUS_SECOND_HALF") {
@@ -73,7 +73,7 @@ const EventCard = (props) => {
 
     return (
       <div
-        className='team '
+        className='team'
 
       >
         <div className="team-info"
@@ -130,7 +130,7 @@ const EventCard = (props) => {
         </div>
         <div className={`status ${is_playing(props.status) && "playing"}`} >
           {
-            get_status(props.status)?.replace("Finalizado", "Final")
+            get_status(props.status)
           }
         </div>
       </div>

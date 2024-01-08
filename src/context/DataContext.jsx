@@ -11,8 +11,11 @@ export const DataContext = createContext({
     set_selected_date: () => { },
     date: null,
     set_date: () => { },
-    leagues_names: null,
-    set_leagues_names: () => { }
+    error:null,
+    set_error:()=>{},
+    showing_leagues:null, 
+    set_showing_leagues:()=>{}
+
 })
 
 export function DataProvider({ children }) {
@@ -20,8 +23,8 @@ export function DataProvider({ children }) {
     const [leagues, set_leagues] = useState(true)
     const [selected_date, set_selected_date] = useState(false)
     const [date, set_date] = useState(new Date())
-    const [leagues_names, set_leagues_names] = useState(false)
-    const [match_in_play, set_match_in_play] = useState(false)
+    const [showing_leagues, set_showing_leagues] = useState([])
+    const [error,set_error ] = useState(false)
     let interval = null
 
     const req = { headers: { 'X-Requested-With': 'XMLHttpRequest' }, cache: 'no-store' }
@@ -36,13 +39,15 @@ export function DataProvider({ children }) {
 
         fetch_json(link, req)
             .then(resp => {
+                // set_leagues_id(resp.sports[0].leagues.map(league=>league.id))
+                // set_leagues_info(resp.sports[0].leagues.map(league => ({"name":league.shortName,"id":league.id})))
                 set_leagues(resp.sports[0].leagues)
-                set_leagues_names(resp.sports[0].leagues.map(league => (league.shortName)))
                 if(!is_match_in_play((resp.sports[0].leagues)) ){
                     clearInterval(interval)
                 }
 
             })
+            .catch(error=>set_error(error))
             .finally(() => set_loading(false))
 
     }
@@ -135,7 +140,10 @@ useEffect(() => {
         leagues, set_leagues,
         selected_date, set_selected_date,
         date, set_date,
-        leagues_names, set_leagues_names
+        error,
+        showing_leagues, set_showing_leagues
+    
+
 
 
 
