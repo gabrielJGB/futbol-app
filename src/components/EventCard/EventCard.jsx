@@ -43,7 +43,13 @@ const EventCard = (props) => {
       return elem.displayClock
     } else if (status === "STATUS_FIRST_HALF") {
       return elem.displayClock
-    }
+    } else if (status === "STATUS_CANCELED") {
+      return "Cancelado"
+    } else if (status === "STATUS_FINAL_PEN") {
+      return "Final (P)"
+    }else if (status === "STATUS_FINAL_AET"){
+      return "Final (Extra)"
+  }
 
   }
 
@@ -59,14 +65,14 @@ const EventCard = (props) => {
   }
 
 
-  const get_escudo = (elem)=>{
-    
-    if("logo" in elem && elem.logo!= ""){
-        return <img src={elem.logo} alt="Escudo" width={IMG_SIZE_1} height={IMG_SIZE_1} /> 
+  const get_escudo = (elem) => {
+
+    if ("logo" in elem && elem.logo != "") {
+      return <img src={elem.logo} alt="Escudo" width={IMG_SIZE_1} height={IMG_SIZE_1} />
     }
-    return <img src={escudo} alt="Escudo" width={IMG_SIZE_1} height={IMG_SIZE_1} /> 
-    
-}
+    return <img src={escudo} alt="Escudo" width={IMG_SIZE_1} height={IMG_SIZE_1} />
+
+  }
 
   const Team = (props) => {
 
@@ -86,7 +92,7 @@ const EventCard = (props) => {
 
                 {/* <img src={props.team.logo} alt="" width={IMG_SIZE_1} height={IMG_SIZE_1} />
                  */}
-                 {get_escudo(props.team)}
+                {get_escudo(props.team)}
                 <div className="team-name">{props.team.displayName}</div>
               </>
               :
@@ -128,6 +134,15 @@ const EventCard = (props) => {
           <span>-</span>
           <div className={`score-away ${props.score[0].winner && "winner"}`}>{props.score[0].score}</div>
         </div>
+
+        {
+          "shootoutScore" in props.score[1] &&
+          <div className='shootout'>
+            {"(" + props.score[1].shootoutScore + "-" + 
+            props.score[0].shootoutScore + ")"}
+          </div>
+        }
+
         <div className={`status ${is_playing(props.status) && "playing"}`} >
           {
             get_status(props.status)
@@ -144,9 +159,9 @@ const EventCard = (props) => {
     <div
       className='event-card_container'
       onClick={() => navigate(`match?id=${props.match.id}`)}
-      
+
     >
- 
+
       <div
         className="match-container"
 

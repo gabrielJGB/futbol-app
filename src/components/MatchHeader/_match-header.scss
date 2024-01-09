@@ -33,7 +33,7 @@
 
         .score-container {
             @include flex_config(flex, column, center, center, 5px);
-            width: 33%;
+            width: max-content;
 
             .score span {
                 font-size: 35px;
@@ -51,6 +51,9 @@
             }
             .winner{
                 color:#8cffd1;
+            }
+            .shootout{
+                font-size: 14px
             }
         }
     }

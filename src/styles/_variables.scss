@@ -13,13 +13,15 @@ darken( $base-color, 10% )
 lighten( $base-color, 10% )
 */
 
-$base_color:rgb(74, 115, 168);
-// $base_color:rgb(188, 190, 47);
+// $base_color:rgb(64, 125, 206);
+
+$base_color:rgb(110, 110, 110);
 
 $background-1:darken($base-color,30%);
 $background-2:darken($base-color,28%);
 $background-3:darken($base-color,23%);
 $background-4:darken($base-color,12%);
+
 
 
 

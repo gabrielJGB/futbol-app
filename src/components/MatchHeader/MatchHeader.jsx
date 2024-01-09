@@ -29,6 +29,12 @@ const MatchHeader = ({header_info}) => {
           return elem.displayClock
         } else if (status === "STATUS_FIRST_HALF") {
           return elem.displayClock
+        } else if (status === "STATUS_CANCELED"){
+            return "Cancelado"
+        }else if (status === "STATUS_FINAL_PEN"){
+            return "Final (Pen)"
+        }else if (status === "STATUS_FINAL_AET"){
+            return "Final (Extra)"
         }
     
       }
@@ -36,9 +42,11 @@ const MatchHeader = ({header_info}) => {
 
 
   const format_time = (detail) => {
-
-    if (detail === "Por def.") {
+    
+    if (detail === "Por def." ) {
       return detail
+    }else if(detail.includes("P.A.")){
+        return "Agendado"
     }
 
     let arr = detail.match(/at (\d+)\:(\d+) (\w\w)/)
@@ -106,6 +114,15 @@ const MatchHeader = ({header_info}) => {
                         <span>{" - "}</span>
                         <span className={`score-away ${header_info.competitions[0].competitors[1].winner && "winner"}`}>{header_info.competitions[0].competitors[1].score}</span>
                     </div>
+
+                    {
+                        "shootoutScore" in header_info.competitions[0].competitors[0] &&
+                        <div className='shootout'> 
+                            {"("+header_info.competitions[0].competitors[0].shootoutScore+"-"+
+                            header_info.competitions[0].competitors[1].shootoutScore+")"}
+                        </div>
+                    }
+
                     <div className={`status ${is_playing(header_info.competitions[0].status)&&"playing"}`}>
                         {get_status(header_info.competitions[0].status)}
                     </div>

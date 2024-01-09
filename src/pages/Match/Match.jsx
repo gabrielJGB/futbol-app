@@ -1,58 +1,40 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom';
-import Spinner from '../../components/Spinner/Spinner';
 import { fetch_json } from '../../utils/fetch_json'
-
 import MatchHeader from '../../components/MatchHeader/MatchHeader';
-import MatchNavigation from '../../components/MatchNavigation/MatchNavigation';
+import MatchSections from '../../components/MatchSections/MatchSections';
+import Spinner from '../../components/Spinner/Spinner';
 
 
-function useQuery() {
+const useQuery = ()=> {
     return new URLSearchParams(useLocation().search);
 }
 
-
 const Match = () => {
     const [loading, set_loading] = useState(true)
-    const [header_info, set_header_info] = useState(false)
+    const [match_data, set_match_data] = useState(false)
+
     let query = useQuery();
     let id = query.get("id");
-
-
-
-
-
-
 
     useEffect(() => {
         let link = "https://site.web.api.espn.com/apis/site/v2/sports/soccer/all/summary?region=ar&lang=es&contentorigin=deportes&event=" + id
 
-
         fetch_json(link)
-            .then(resp => {
-                set_header_info(resp.header)
-
-            })
+            .then(resp => set_match_data(resp))
             .catch(error => console.log(error))
             .finally(() => set_loading(false))
 
     }, [])
 
-
-    if (loading) {
-        return (
-            <Spinner />
-        )
-    }
+    if (loading)
+        return (<Spinner />)
 
     return (
         <div className='match_container'>
 
-            <MatchHeader header_info={header_info}/>
-            <MatchNavigation />
-
-            
-            
+            <MatchHeader header_info={match_data.header} />
+            <MatchSections match_data={match_data} />
 
         </div>
     )
