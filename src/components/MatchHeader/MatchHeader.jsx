@@ -32,9 +32,15 @@ const MatchHeader = ({header_info}) => {
         } else if (status === "STATUS_CANCELED"){
             return "Cancelado"
         }else if (status === "STATUS_FINAL_PEN"){
-            return "Final (Pen)"
+            return "Final (P)"
         }else if (status === "STATUS_FINAL_AET"){
             return "Final (Extra)"
+        }else if (status === "STATUS_OVERTIME"){
+            return elem.displayClock
+        }else if (status === "STATUS_HALFTIME_ET"){
+            return elem.displayClock
+        }else if(status ==="STATUS_END_OF_EXTRATIME"){
+            return "Pen."
         }
     
       }
@@ -64,7 +70,7 @@ const MatchHeader = ({header_info}) => {
 
   const is_playing = (elem) => {
     let status = elem.type.name
-    if (status === "STATUS_HALFTIME" || status === "STATUS_SECOND_HALF" || status === "STATUS_FIRST_HALF") {
+    if (status === "STATUS_HALFTIME" || status === "STATUS_SECOND_HALF" || status === "STATUS_FIRST_HALF" || status === "STATUS_OVERTIME" || status ==="STATUS_HALFTIME_ET"  ) {
       return true
     } else {
       return false

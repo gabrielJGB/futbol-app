@@ -17,7 +17,7 @@
     div{
         @include flex_config(flex,row,center,center,0);
         cursor: pointer;
-        min-height: 40px;
+        min-height: 45px;
         color:white;
         font-size: 15px;
         width:33.33%;

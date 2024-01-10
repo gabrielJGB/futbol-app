@@ -1,8 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-const Videos = () => {
+const Videos = ({ info }) => {
+
+  useEffect(() => {
+    console.log(info.videos)
+  }, [])
+
   return (
-    <div>Videos</div>
+    <div className='videos_container'>
+<h5>Videos</h5>
+      
+
+
+    </div>
   )
 }
 
