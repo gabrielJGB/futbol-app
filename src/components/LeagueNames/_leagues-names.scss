@@ -2,14 +2,14 @@
 
     @include flex_config(flex,row,center,center,7px);
     flex-wrap: wrap;
-    width:40%;
+    width:80%;
     margin-bottom:10px;
     .league-name{
         background-color: $background-3;
         cursor: pointer;
         border-radius: 5px;
         font-size: 15px;
-        padding:5px;
+        padding:4px 5px;
         transition: all 0.2s;
         border:solid 2px $background-4;
     }

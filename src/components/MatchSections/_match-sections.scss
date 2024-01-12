@@ -4,27 +4,28 @@
 
     .match-sections_navigation {
         @include flex_config(flex, row, unset, center, 0);
-
+        position: relative;
+        z-index: 13;
         width: 100%;
         margin: 0 auto;
 
         bottom: 0;
-        border-radius: 5px;
+        // border-radius: 5px;
         background-color: $background-3;
-        box-shadow: 0 0 10px black;
+        box-shadow: 0 1px 4px black;
         overflow-x: auto;
 
 
         .tab {
-            padding: 10px 5px;
+            padding:10px ;
             font-size: 15px;
             text-align: center;
             cursor: pointer;
-            color: white;
+            color:rgb(180 206 255);
             width: 100%;
-            min-width: 100px;
             border-bottom: solid 2px transparent;
             background-color: $background-3;
+            transition: 0.2s;
 
             &:hover {
                 background-color: $background-2;
@@ -32,8 +33,9 @@
         }
 
         .selected {
-            transition: 0.2s;
+            
             // background-color: $background-2 !important;
+            color: white;
             border-color: white;
 
         }
@@ -81,9 +83,10 @@
         width: -webkit-fill-available;
 
         background-color: $background-2;
-        border: solid 2px $background-4;
+        border: solid 2px $background-3;
+        // box-shadow: 0 1px 4px black;
         color: #dbdbdb;
-        border-radius: 4px;
+        border-radius: 2px;
         padding: 7px;
 
         .minute {
@@ -116,11 +119,93 @@
 }
 
 
+.tables_container{
+    @include flex_config(flex,column,center,center,0);
+    margin:auto;
+    width: 100%;
+    color:rgb(207, 207, 207);
+
+    .title{
+        margin:10px 0;
+    }
+
+    &>div{
+        width:100%;
+        margin-bottom:20px;
+        h3{
+            text-align: center;
+        }
+    }
+
+
+    table{
+        width:100%;
+    }
+
+
+    table th{
+        padding:5px 1px;
+        background-color: rgb(22, 22, 22);
+    }
+
+    table tr{
+        background-color: $background-2;
+    }
+    // table tr:nth-child(odd){
+    //     background-color: $background-3;
+    // }
+
+    table .highlight{
+        // background-color: rgb(75, 74, 74);
+        background-color: $background-6
+    }
+    
+    table td{
+        text-align: center;
+        padding: 7px;
+    }
+    .team{
+        @include flex_config(flex,row,start,center,5px);
+        text-align: left;
+        font-size: 14px;
+
+    }
+    .bold{
+        font-weight: bold;
+    }
+}
+
+
+.videos_container{
+    @include flex_config(flex,column-reverse,center,center,4px);
+    .video{
+        margin:20px 0;
+        
+        .video-title{
+            text-align: center;
+            color:rgb(241, 241, 241);
+            margin-bottom:5px;
+            font-size: 19px;
+        }
+        .video-description{
+            
+            color:rgb(209, 209, 209);
+            font-size: 13px;
+            padding:0 3px;
+            margin-bottom:5px;
+        }
+        
+        .video-tag{
+            width:100%;
+        }
+    }
+}
+
 @media screen and (max-width:800px) {
 
 
     .match-sections_container .match-sections_navigation .tab {
-        padding: 18px 5px;
+        padding: 18px 20px;
     }
 
     .match-sections_container .match-sections_navigation {
@@ -146,6 +231,20 @@
     .match-sections_navigation {
         width: 100% !important;
         border-radius: 0px !important;
+    }
+
+    .table_container{
+      
+        table td{
+            padding:6px 3px;
+            font-size:13px
+        }
+    }
+
+    .videos_container{
+        .video{
+            margin-top:0px
+        }    
     }
 
 }

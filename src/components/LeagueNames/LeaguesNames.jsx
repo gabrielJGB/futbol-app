@@ -4,17 +4,6 @@ import { DataContext } from '../../context/DataContext'
 const LeaguesNames = () => {
     const data = useContext(DataContext)
 
-    const League = ({ league }) => {
-
-        return (
-            <div
-                className={`league-name`}
-            >
-                {league.name}
-
-            </div>
-        )
-    }
 
     return (
         <div className='leagues-names_container'>
@@ -22,8 +11,17 @@ const LeaguesNames = () => {
                 !data.loading &&
 
                 data.leagues.map((league, i) => (
-                    // <div>{league.id}</div>
-                    <League key={i} league={league} />
+                    
+                    <div
+                        key={i}
+                        className={`league-name`}
+                    >
+                        {/* {league.slug.toUpperCase().replaceAll(".","-").replaceAll("_"," ")} */}
+                        {league.shortName}
+                        {/* {league.slug.split(".")[0].toUpperCase()} */}
+                        {/* {league.slug.split(".")[1].replaceAll("_"," ")} */}
+
+                    </div>
                 ))
             }
         </div>

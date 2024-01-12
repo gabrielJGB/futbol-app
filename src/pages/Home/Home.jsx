@@ -26,17 +26,17 @@ const Home = () => {
           <>
             <Navigation />
             <LeaguesNames />
-
             {
               data.loading ?
-                <Spinner />
-                :
-                // data.leagues.filter(league=>data.showing_leagues.includes(league.id)).map((league, i) => (
-                  // <LeagueEvents key={i} league={league} />
-                // ))
+              <Spinner />
+              :
+              
+                
                 data.leagues.map((league, i) => (
                   <LeagueEvents key={i} league={league} />
                 ))
+                
+              
             }
           </>
 

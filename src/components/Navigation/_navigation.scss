@@ -9,16 +9,17 @@
 
 .navigation_main{
     @include flex_config(flex,row,space-between,center,0);
-    width: 40%;
-    border-radius: 5px;
+    width: 100%;
+    position:relative;
+    z-index: 9;
     background-color: $background-3;
     box-shadow: 0 1px 4px black;
     
     div{
         @include flex_config(flex,row,center,center,0);
         cursor: pointer;
-        min-height: 45px;
-        color:white;
+        min-height: 35px;
+        color:rgb(180 206 255);
         font-size: 15px;
         width:33.33%;
         transition: all 0.2s;
@@ -27,6 +28,7 @@
         }
     }
     .center{
+        color:white;
         border-bottom: solid 2px rgba(255, 255, 255, 0.719);
     }
     
@@ -66,6 +68,9 @@
         width:100%;
         div{
             font-size: 14px;
+            min-height: 45px;
+
+
         }
         div:hover{
             background-color: unset;

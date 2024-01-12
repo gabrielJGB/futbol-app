@@ -1,7 +1,9 @@
 .home_container{    
-    @include flex_config(flex,column,center,center,0);
-    
-    padding:10px 5px;
+    // @include flex_config(flex,column,center,center,0);
+    @include flex_config(flex,row,center,baseline,20px);
+
+    flex-wrap:wrap;
+    margin-bottom:50px;
     color:$color_2;
 }
 

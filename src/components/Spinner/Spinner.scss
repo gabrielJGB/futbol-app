@@ -2,7 +2,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top:100px
+
+    position:absolute;
+    top:30vh;
+    left:0;
+    right:0
   }
   
   .spinner {

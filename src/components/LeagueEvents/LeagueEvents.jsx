@@ -19,12 +19,12 @@ const LeagueEvents = (props) => {
           <EventCard key={i} match={match} />
         ))
       }
-
+{/* 
       <div className='league_menu'>
         <div> Tablas</div>
         <div>Fixture</div>
         <div>Equipos</div>
-      </div>
+      </div> */}
     </div>
   )
 }

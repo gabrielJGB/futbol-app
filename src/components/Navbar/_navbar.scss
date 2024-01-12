@@ -1,4 +1,6 @@
 .navbar_container{
+    position:relative;
+    z-index: 10;
     color:$color-2;
     background-color: $background-3;
     padding:10px 20px

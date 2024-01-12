@@ -2,8 +2,9 @@
     @include flex_config(flex, column, center, center, 0);
     width: 40%;
     // border: solid 1px #000000;
-    border-radius: 5px;
-    margin-bottom: 25px;
+    // border-radius: 5px;
+    // margin-bottom: 25px;
+    // border-bottom: solid 1px rgb(31, 48, 73);
     background-color: $background-3;
     box-shadow: 0 1px 4px black;
     .league-header {
@@ -52,7 +53,7 @@
 
 @media screen and (max-width:800px) {
     .league-events_container {
-        width: -webkit-fill-available;
+        width: 97%;
     }
 
 }
