@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useContext } from 'react'
+import Config from '../../components/Config/Config'
 import LeagueEvents from '../../components/LeagueEvents/LeagueEvents'
 import LeaguesNames from '../../components/LeagueNames/LeaguesNames'
 import Navigation from '../../components/Navigation/Navigation'
@@ -25,6 +26,7 @@ const Home = () => {
           :
           <>
             <Navigation />
+            <Config />
             <LeaguesNames />
             {
               data.loading ?

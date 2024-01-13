@@ -14,7 +14,7 @@ function convert_to_timestamp(fecha) {
   // Obtener el timestamp en milisegundos
   var timestamp = fechaObj.getTime();
 
-  return timestamp;
+  return timestamp+1000*60*60*4;
 }
 
 // Uso de la función

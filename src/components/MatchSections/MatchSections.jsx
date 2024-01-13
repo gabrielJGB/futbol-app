@@ -15,12 +15,12 @@ const MatchSections = ({ match_data }) => {
 
 
   useEffect(() => {
-    console.log(match_data)
+    
 
     set_navigation_tags(["Información"])
 
     if ("roster" in match_data.rosters[0])
-      set_navigation_tags(prev => [...prev, "Alineaciones"])
+      set_navigation_tags(prev => [...prev, "Formaciones"])
 
     if ("commentary" in match_data)
       set_navigation_tags(prev => [...prev, "Relato"])
@@ -68,7 +68,7 @@ const MatchSections = ({ match_data }) => {
     switch (selected_tab) {
       case "Información":
         return <Information info={match_data}/>
-      case "Alineaciones":
+      case "Formaciones":
         return <Lineups info={match_data} />
       case "Relato":
         return <Commentary info={match_data} />

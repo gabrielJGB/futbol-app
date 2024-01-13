@@ -14,7 +14,9 @@ export const DataContext = createContext({
     error:null,
     set_error:()=>{},
     showing_leagues:null, 
-    set_showing_leagues:()=>{}
+    set_showing_leagues:()=>{},
+    input_checked:null, 
+    set_input_checked:()=>{}
 
 })
 
@@ -25,9 +27,10 @@ export function DataProvider({ children }) {
     const [date, set_date] = useState(new Date())
     const [showing_leagues, set_showing_leagues] = useState([])
     const [error,set_error ] = useState(false)
+    const [input_checked, set_input_checked] = useState(true)
     let interval = null
 
-    const req = { headers: { 'X-Requested-With': 'XMLHttpRequest' }, cache: 'no-store' }
+    const req = {  cache: 'no-store' }
     
     
     
@@ -141,7 +144,8 @@ useEffect(() => {
         selected_date, set_selected_date,
         date, set_date,
         error,
-        showing_leagues, set_showing_leagues
+        showing_leagues, set_showing_leagues,
+        input_checked, set_input_checked
     
 
 

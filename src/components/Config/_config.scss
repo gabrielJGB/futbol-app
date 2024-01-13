@@ -1,0 +1,24 @@
+.config_container{
+    @include flex_config(flex,row,center,center,5px);
+    padding:5px 0;
+    width:98%;
+    .calendar{
+        cursor:pointer;
+        input{
+            padding:3px 0;
+            text-align: center;
+        }
+        button{
+            margin-left: 4px;
+            padding:7px 23px;
+            border:0;
+            cursor: pointer;
+            background-color: $background-3;
+            color:white;
+            &:hover{
+                background-color: $background-4;
+            }
+        }
+
+    }
+}

@@ -1,11 +1,16 @@
 {
-    "version":"1.0.8",
-    "name": "Nombre App",
-    "short_name": "App",
-    "description": "Descripcion de la aplicación",
-    "theme_color": "#004b7a",
-    "background_color" : "#004b7a",
+    "version":"1.0.9",
+    "name": "Futbol 11",
+    "short_name": "Futbol 11",
+    "description": "Resultados de futbol en vivo",
+    "theme_color": "#253b58",
+    "background_color" : "#253b58",
     "icons": [
+      {
+        "src": "pwa-64x64.png",
+        "sizes": "64x64",
+        "type": "image/png"
+      },
       {
         "src": "pwa-128x128.png",
         "sizes": "128x128",
@@ -15,11 +20,7 @@
         "src": "pwa-256x256.png",
         "sizes": "256x256",
         "type": "image/png"
-      },
-      {
-        "src": "pwa-512x512.png",
-        "sizes": "512x512",
-        "type": "image/png"
       }
+     
     ]
   }

@@ -4,10 +4,8 @@ import escudo from '../../assets/escudo.png'
 const Tables = ({ info }) => {
 
   const [tables, set_tables] = useState(info.standings.groups)
-  const [title, set_title] = useState(info.standings.groups[0].header)
   const [ids, set_ids] = useState([info.boxscore.teams[0].team.id, info.boxscore.teams[1].team.id])
-
-  const IMG_SIZE = 18
+  const IMG_SIZE = 20
 
 
 

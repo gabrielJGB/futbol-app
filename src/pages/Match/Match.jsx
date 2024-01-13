@@ -13,14 +13,14 @@ const useQuery = ()=> {
 const Match = () => {
     const [loading, set_loading] = useState(true)
     const [match_data, set_match_data] = useState(false)
+    const req = {  cache: 'no-store' }
 
     let query = useQuery();
     let id = query.get("id");
-
     useEffect(() => {
         let link = "https://site.web.api.espn.com/apis/site/v2/sports/soccer/all/summary?region=ar&lang=es&contentorigin=deportes&event=" + id
 
-        fetch_json(link)
+        fetch_json(link,req)
             .then(resp => set_match_data(resp))
             .catch(error => console.log(error))
             .finally(() => set_loading(false))

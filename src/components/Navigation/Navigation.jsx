@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { DataContext } from '../../context/DataContext'
-import arrow_left from '../../assets/arrow_left.png'
-import arrow_right from '../../assets/arrow_right.png'
+
 import { convert_to_timestamp, get_time_selected } from '../../utils/time'
 
 const Navigation = (props) => {
@@ -22,7 +21,7 @@ const Navigation = (props) => {
       let selected = new Date(data.date)
       set_previous_date(selected.setDate(selected.getDate() - 1))
       set_next_date(selected.setDate(selected.getDate() + 2))
-
+      
     }
 
   }, [data.date])

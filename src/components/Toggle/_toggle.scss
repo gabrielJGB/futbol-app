@@ -1,0 +1,72 @@
+.toggle{
+    @include flex_config(flex,row,center,center,10px);
+    
+    color:rgb(240, 240, 240);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    &>div{
+        font-size: 17px;
+    }
+}
+
+.switchBtn {
+    position: relative;
+    display: inline-block;
+    width: 70px;
+    height: 34px;
+}
+.switchBtn input {display:none;}
+
+
+
+.slide {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $background-4;
+    transition: .4s;
+    color: black;
+}
+.slide:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 40px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+input:checked + .slide {
+    background-color: #7c7c7c;
+    
+    padding-left: 0px;
+}
+
+input:disabled + .slide {
+    background-color: $background-4;
+    
+}
+
+input:focus + .slide {
+    box-shadow: 0 0 1px #01aeed;
+}
+input:checked + .slide:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+    left: -20px;
+}
+
+
+
+@media screen and (max-width:800px){
+    .toggle{
+        margin-top: 0;
+        
+    }
+}
