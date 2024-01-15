@@ -177,6 +177,8 @@
                     @include flex_config(flex, row, space-between, center, 10px);
                     width:98%;
                     background-color: $background-2;
+                    cursor: pointer;
+                    transition: 0.2s;
                     padding:2px 5px;
 
                     .left {
@@ -224,6 +226,11 @@
 
                     .win {
                         color: rgb(37, 255, 37)
+                    }
+
+
+                    &:hover{
+                        background-color: $background-3;
                     }
                 }
 

@@ -1,9 +1,11 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import escudo from '../../assets/escudo.png'
 
 const Information = ({ info }) => {
 
   const IMG_SIZE = 29
+  const navigate = useNavigate()
 
   // console.log("INFO")
   // console.log("Enfrentamientos previos", match_data.headToHeadGames[0].events.length) //con respecto al local
@@ -63,7 +65,11 @@ const Information = ({ info }) => {
         <div className="games">
           {
             team.events.map((game, i) => (
-              <div key={i} className='game'>
+              <div key={i} className='game' onClick={()=> {
+                navigate(`/match?id=${game.id}`)
+              } }>
+
+                
                 <div className="left">
                   <div className="top">
 
