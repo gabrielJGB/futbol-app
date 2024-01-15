@@ -7,6 +7,21 @@ const format_date = (fecha_num) => {
   return String(fecha.getFullYear()).padStart(2, "0") + String((fecha.getMonth() + 1)).padStart(2, "0") + String(fecha.getDate()).padStart(2, "0")
 }
 
+export function convertTimestampToDate(timestamp) {
+  // Crear un objeto Date con el timestamp
+  const date = new Date(timestamp);
+
+  // Obtener el año, mes y día
+  const year = date.getFullYear();
+  // Agregar 1 al mes y asegurarse de que tenga dos dígitos
+  const month = ('0' + (date.getMonth() + 1)).slice(-2);
+  // Asegurarse de que el día tenga dos dígitos
+  const day = ('0' + date.getDate()).slice(-2);
+
+  // Construir y retornar la fecha en el formato deseado
+  return `${year}-${month}-${day}`;
+}
+
 function convert_to_timestamp(fecha) {
   // Crear un objeto Date a partir de la cadena de fecha
   var fechaObj = new Date(fecha);

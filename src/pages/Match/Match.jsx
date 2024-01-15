@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { fetch_json } from '../../utils/fetch_json'
 import MatchHeader from '../../components/MatchHeader/MatchHeader';
 import MatchSections from '../../components/MatchSections/MatchSections';
@@ -15,8 +15,8 @@ const Match = () => {
     const [match_data, set_match_data] = useState(false)
     const req = {  cache: 'no-store' }
 
-    let query = useQuery();
-    let id = query.get("id");
+    let query = useParams();
+    let id = query.id
     useEffect(() => {
         let link = "https://site.web.api.espn.com/apis/site/v2/sports/soccer/all/summary?region=ar&lang=es&contentorigin=deportes&event=" + id
 

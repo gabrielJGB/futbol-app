@@ -158,7 +158,7 @@ const EventCard = (props) => {
 
     <div
       className='event-card_container'
-      onClick={() => navigate(`match?id=${props.match.id}`)}
+      onClick={() => navigate(`match/${props.match.id}`)}
 
     >
 

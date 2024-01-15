@@ -1,11 +1,13 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import escudo from '../../assets/escudo.png'
 
 const Information = ({ info }) => {
 
   const IMG_SIZE = 29
   const navigate = useNavigate()
+
+
 
   // console.log("INFO")
   // console.log("Enfrentamientos previos", match_data.headToHeadGames[0].events.length) //con respecto al local
@@ -34,12 +36,12 @@ const Information = ({ info }) => {
   const format_main_date = (date) => {
     let a = date.split("T")[0]
     let b = a.split("-")
-    
-    const month_arr = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+
+    const month_arr = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 
     let day = b[2]
-    let month = month_arr[parseInt(b[1])-1]
-    let year= b[0]
+    let month = month_arr[parseInt(b[1]) - 1]
+    let year = b[0]
 
     return `${parseInt(day)} de ${month} de ${year}`
 
@@ -59,17 +61,20 @@ const Information = ({ info }) => {
     return (
       <div className='team'>
         <div className="info">
-          <img src={"logo" in team.team? team.team.logo:escudo} alt="Escudo" width={IMG_SIZE} height={IMG_SIZE} />
+          <img src={"logo" in team.team ? team.team.logo : escudo} alt="Escudo" width={IMG_SIZE} height={IMG_SIZE} />
           <div className="name">{team.team.displayName} vs:</div>
         </div>
         <div className="games">
           {
             team.events.map((game, i) => (
-              <div key={i} className='game' onClick={()=> {
-                navigate(`/match?id=${game.id}`)
-              } }>
-
+              <div key={i} className='game' onClick={() => {                
+                navigate(`/match/${game.id}`)
+                navigate(0)
                 
+                
+              }}>
+                
+
                 <div className="left">
                   <div className="top">
 
@@ -185,6 +190,7 @@ const Information = ({ info }) => {
 
         </div>
       }
+
 
 
       <div className="last-games">
