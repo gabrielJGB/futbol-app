@@ -43,7 +43,7 @@ function get_time_selected(timestamp) {
   } else {
 
     const dias = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
-    const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+   
     return `${dias[fecha.getDay()].slice(0,3)} ${fecha.getDate()}/${String(fecha.getMonth()+1).padStart("2","0")}/${String(fecha.getFullYear()).slice(2)}`;
   }
 }

@@ -30,10 +30,10 @@ const MatchSections = ({ match_data }) => {
     if ("statistics" in match_data.boxscore.teams[0])
       set_navigation_tags(prev => [...prev, "Estadísticas"])
 
-    if (match_data.videos?.length ? true : false)
+    if (match_data.videos?.length )
       set_navigation_tags(prev => [...prev, "Videos"])
 
-    if (match_data.standings.groups.length ? true : false)
+    if (match_data.standings.groups.length && match_data.standings.groups[0].standings.entries.length) 
       set_navigation_tags(prev => [...prev, "Tablas"])
 
 

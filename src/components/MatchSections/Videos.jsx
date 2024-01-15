@@ -10,7 +10,7 @@ const Videos = ({ info }) => {
     <div className='videos_container'>
 
       {
-        info.videos.filter(v=>!v.geoRestrictions.countries.includes("BR")).map((video, i) => (
+        info.videos.filter(v=>!v.geoRestrictions?.countries?.includes("BR")).map((video, i) => (
           <div key={i} className="video">
             <div className='video-title'>{video.headline}</div>
             <div className="video-description">{video.description}</div>

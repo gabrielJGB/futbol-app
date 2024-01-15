@@ -1,5 +1,6 @@
 .navigation_container{
     @include flex_config(flex,column,center,center,0);
+    margin-top:20px;
     width:100%;
     margin-bottom: 10px;
     position: sticky;
@@ -9,8 +10,10 @@
 
 .navigation_main{
     @include flex_config(flex,row,space-between,center,0);
-    width: 100%;
+    
+    width: 40%;
     position:relative;
+    top:0;
     z-index: 9;
     background-color: $background-3;
     box-shadow: 0 1px 4px black;
@@ -19,7 +22,7 @@
         @include flex_config(flex,row,center,center,0);
         cursor: pointer;
         min-height: 35px;
-        color:rgb(180 206 255);
+        color:$background-7;
         font-size: 15px;
         width:33.33%;
         transition: all 0.2s;
@@ -63,6 +66,9 @@
 }
 
 @media screen and (max-width:800px){
+    .navigation_container{
+        margin-top:0;
+    }
     .navigation_main{
         
         width:100%;

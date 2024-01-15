@@ -6,6 +6,7 @@ import yellow from '../../assets/yellow.png'
 import penalty from '../../assets/penal.png'
 import goal from '../../assets/goal.png'
 import boot from '../../assets/boot.png'
+import escudo from '../../assets/escudo.png'
 
 const Lineups = ({ info }) => {
   const IMG_SIZE_1 = 22
@@ -15,20 +16,20 @@ const Lineups = ({ info }) => {
   const [home_selected, set_home_selected] = useState(true)
 
   const [info_home, set_info_home] = useState({
-    logo: info.header.competitions[0].competitors[0].team.logos[0].href,
+    logo: ("logos" in info.header.competitions[0].competitors[0].team? info.header.competitions[0].competitors[0].team.logos[0].href : escudo),
     name: info.header.competitions[0].competitors[0].team.displayName,
     formation: info.rosters[0].formation
   })
 
   const [info_away, set_info_away] = useState({
-    logo: info.header.competitions[0].competitors[1].team.logos[0].href,
+    logo: ("logos" in info.header.competitions[0].competitors[1].team? info.header.competitions[0].competitors[1].team.logos[0].href : escudo),
     name: info.header.competitions[0].competitors[1].team.displayName,
     formation: info.rosters[1].formation
   })
 
 
   useEffect(() => {
-    console.log(info.rosters)
+    console.log(info)
 
 
   }, [])
