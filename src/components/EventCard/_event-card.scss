@@ -2,7 +2,7 @@
 
     @include flex_config(flex, column, center, center, 0);
     width: -webkit-fill-available;
-    padding: 5px;
+    padding-bottom: 4px;
     margin: 0 7px 7px 7px;
     border-radius: 3px;
     border:solid 1px  $background-6;

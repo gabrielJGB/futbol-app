@@ -3,7 +3,19 @@ import { DataContext } from '../../context/DataContext'
 
 const LeaguesNames = () => {
     const data = useContext(DataContext)
-
+    const [selected, set_selected] = useState(false)
+    
+    
+    const LeagueName = ({league})=>{
+        const [selected, set_selected] = useState(false)
+        return (
+            <div className={`league-name `}
+                 onClick={()=>set_selected(prev=>!prev)}
+        >
+            {league.shortName}
+        </div>
+        )
+    }
 
     return (
         <div className='leagues-names_container'>
@@ -11,17 +23,7 @@ const LeaguesNames = () => {
                 !data.loading &&
 
                 data.leagues.map((league, i) => (
-                    
-                    <div
-                        key={i}
-                        className={`league-name`}
-                    >
-                        {/* {league.slug.toUpperCase().replaceAll(".","-").replaceAll("_"," ")} */}
-                        {league.shortName}
-                        {/* {league.slug.split(".")[0].toUpperCase()} */}
-                        {/* {league.slug.split(".")[1].replaceAll("_"," ")} */}
-
-                    </div>
+                   <LeagueName key={i} league={league}/>
                 ))
             }
         </div>

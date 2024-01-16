@@ -5,6 +5,7 @@ import red from '../../assets/red.png'
 import yellow from '../../assets/yellow.png'
 import penalty from '../../assets/penal.png'
 import goal from '../../assets/goal.png'
+import ownGoal from '../../assets/own-goal.png'
 import boot from '../../assets/boot.png'
 import escudo from '../../assets/escudo.png'
 
@@ -39,6 +40,8 @@ const Lineups = ({ info }) => {
 
     if (play.penaltyKick)
       return penalty
+    else if (play.ownGoal)
+      return ownGoal
     else if (play.didScore)
       return goal
     else if (play.didAssist)

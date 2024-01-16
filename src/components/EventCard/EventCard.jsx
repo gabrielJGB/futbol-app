@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import ball from '../../assets/ball.png'
 import escudo from '../../assets/escudo.png'
 
-const IMG_SIZE_1 = 45;
+const IMG_SIZE_1 = 35;
 const IMG_SIZE_2 = 10;
 
 const EventCard = (props) => {

@@ -169,7 +169,7 @@
                 transition: 0.2s;
                 .header{
                     color:#b1b1b1;
-                    font-size: 14px;
+                    font-size: 13px;
                 }
                 &:hover{
                     background-color: $background-3;
@@ -253,14 +253,14 @@
                     }
 
                     .bottom {
-                        @include flex_config(flex, row, start, center, 8px);
+                        @include flex_config(flex, row, start, center, 7px);
                         width: 100%;
                         padding:3px 0
                     }
 
                     .right {
                         font-size: 21px;
-                        width: 40px;
+                        min-width: max-content;
                         font-weight: 600;
                     }
 

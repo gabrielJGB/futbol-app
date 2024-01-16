@@ -67,12 +67,12 @@ const Information = ({ info }) => {
     if (match_info.atVs === "vs") {
       home = info.headToHeadGames[0].team
       away = match_info.opponent
-      
-      
+
+
     } else {
       home = match_info.opponent
       away = info.headToHeadGames[0].team
-      
+
     }
     console.l
 
@@ -84,7 +84,7 @@ const Information = ({ info }) => {
         }}
       >
         <div className="header">
-          <span>{format_game_date(match_info.gameDate)}</span> - <span>{match_info.leagueAbbreviation}</span>
+          <span>{format_game_date(match_info.gameDate)}</span> - <span>{match_info.leagueName}</span>
         </div>
         <div className="container">
           <div className="team home">
@@ -132,8 +132,8 @@ const Information = ({ info }) => {
                     <div className="title">{game.leagueName}</div>
                   </div>
                   <div className="bottom">
-                    <div className="date">{format_game_date(game.gameDate)}</div>
                     <div className="vsAt">{(game.atVs === "en" ? "(V)" : "(L)")}</div>
+                    <div className="date">{format_game_date(game.gameDate)}</div>
                     <img src={"logo" in game.opponent ? game.opponent.logo : escudo} alt="" width={IMG_SIZE} height={IMG_SIZE} />
                     <div className="opponent">{game.opponent.displayName}</div>
 
@@ -178,7 +178,7 @@ const Information = ({ info }) => {
         {
           "venue" in info.gameInfo && "city" in info.gameInfo.venue.address &&
           <div className='info_box'>
-            <div className="data">{`${info.gameInfo.venue.address.city}, ${info.gameInfo.venue?.address?.country}`}</div>
+            <div className="data">{`${info.gameInfo.venue.address.city} ${"country" in info.gameInfo.venue.address?  ", " +info.gameInfo.venue.address.country:""}`}</div>
             <div className="name">Ciudad</div>
           </div>
         }
@@ -251,18 +251,23 @@ const Information = ({ info }) => {
         </div>
       }
 
-      <div className="history">
+      {
+        info.headToHeadGames[0].events.length > 0 &&
 
-        <h2>Historial reciente</h2>
+        <div className="history">
 
-        <div className="history-container">
-          {
-            info.headToHeadGames[0].events.map((e, i) => (
-              <HistoryMatch match_info={e} key={i} />
-            ))
-          }
+          <h2>Historial reciente</h2>
+
+          <div className="history-container">
+            {
+              info.headToHeadGames[0].events.map((e, i) => (
+                <HistoryMatch match_info={e} key={i} />
+              ))
+            }
+          </div>
         </div>
-      </div>
+      }
+
 
       <div className="last-games">
         <h2 className="title">Últimos Partidos</h2>
