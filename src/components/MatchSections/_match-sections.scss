@@ -75,12 +75,12 @@
 
 
 .info_container {
-    @include flex_config(flex, column, center, center, 14px);
+    @include flex_config(flex, column, center, center, 30px);
     margin-top: 12px;
     color: rgb(238, 238, 238);
 
     .info {
-        @include flex_config(flex, column, center, center, 9px);
+        @include flex_config(flex, column, center, center, 10px);
         width: 100%;
         padding: 5px 0;
         // background-color: $background-3;
@@ -106,24 +106,28 @@
 
 
     .penalties {
-        @include flex_config(flex, column, center, center, 7px);
-        width: 100%;
-        background-color: $background-3;
-        box-shadow: 0 1px 4px black;
-        padding: 5px 0 10px 0;
+        @include flex_config(flex, column, center, center, 0px);
+        width: 70%;
+        // background-color: $background-3;
+        // box-shadow: 0 1px 4px black;
+        // padding: 5px 0 10px 0;
 
         .title {
-            @include flex_config(flex, row, space-between, center, 5px);
-            width: 90%;
+           margin:0 auto;    
+           
+        }
 
-            .team {
-                font-size: 14px
+        .teams{
+            @include flex_config(flex, row, space-between, center,10px);
+            width:100%;
+            .team{
+                margin-bottom: 7px
             }
         }
 
         .shootout-container {
-            @include flex_config(flex, row, space-between, center, 9px);
-            width: 98%;
+            @include flex_config(flex, row, space-between, baseline,10px);
+            width: 100%;
             font-size: 13px;
 
             .shoot {
@@ -145,6 +149,63 @@
             font-size: 20px
         }
 
+    }
+
+    .history{
+        @include flex_config(flex, column, center, center, 20px);
+        width:70%;
+
+        .history-container{
+            @include flex_config(flex, column, center, center, 2px);
+            width:100%;
+            
+            
+            .match{
+                @include flex_config(flex, column, center, center, 0px);
+                width:100%;
+                background-color: $background-2;
+                padding:2px 0;
+                cursor: pointer;
+                transition: 0.2s;
+                .header{
+                    color:#b1b1b1;
+                    font-size: 14px;
+                }
+                &:hover{
+                    background-color: $background-3;
+                }
+            }
+            .container{
+                @include flex_config(flex, row, center, center, 15px);
+                width:100%;
+                padding:5px 0;
+                .team{
+                    min-width: 40%;
+                    @include flex_config(flex, row, center, center, 5px);
+                    font-size: 15px;
+                    
+                    
+                }
+                .home{
+                    text-align: right;
+                    justify-content: end; 
+                }
+                .away{
+                    text-align: left;
+                    justify-content: start;  
+                }
+
+                .score{
+                    min-width:max-content;
+                    text-align: center;
+                    font-size:26px;
+                    font-weight: bold;
+                    .dash{margin:0 4px}
+                    // background-color: red
+                }
+            }
+        }
+        
     }
 
 
@@ -169,7 +230,7 @@
 
                 .games {
                     @include flex_config(flex, column, center, center, 2px);
-                    width: 98%;
+                    width: 100%;
                     margin: auto
                 }
 
@@ -490,6 +551,12 @@
 
         .last-games {
             width: 100%;
+        }
+        .penalties{
+            width:100%
+        }
+        .history{
+            width:100%
         }
     }
 

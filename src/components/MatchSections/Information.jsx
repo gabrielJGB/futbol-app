@@ -57,6 +57,58 @@ const Information = ({ info }) => {
 
   }
 
+
+  const HistoryMatch = ({ match_info }) => {
+    let home = {}
+    let away = {}
+    let t = ""
+
+
+    if (match_info.atVs === "vs") {
+      home = info.headToHeadGames[0].team
+      away = match_info.opponent
+      
+      
+    } else {
+      home = match_info.opponent
+      away = info.headToHeadGames[0].team
+      
+    }
+    console.l
+
+    return (
+      <div className="match"
+        onClick={() => {
+          navigate(`/match/${match_info.id}`)
+          navigate(0)
+        }}
+      >
+        <div className="header">
+          <span>{format_game_date(match_info.gameDate)}</span> - <span>{match_info.leagueAbbreviation}</span>
+        </div>
+        <div className="container">
+          <div className="team home">
+
+            <div className="name">{home.displayName}</div>
+            <img src={"logo" in home ? home.logo : escudo} alt="Escudo" width={IMG_SIZE} height={IMG_SIZE} />
+          </div>
+          <div className="score">
+            <span>{match_info.homeTeamScore}</span>
+            <span className='dash'>{"-"}</span>
+            <span>{match_info.awayTeamScore}</span>
+          </div>
+          <div className="team away">
+            <img src={"logo" in away ? away.logo : escudo} alt="Escudo" width={IMG_SIZE} height={IMG_SIZE} />
+            <div className="name">{away.displayName}</div>
+          </div>
+        </div>
+        {/* <div>{home.displayName}</div>
+        vs
+        <div>{away.displayName}</div> */}
+      </div>
+    )
+  }
+
   const Team = ({ team }) => {
     return (
       <div className='team'>
@@ -67,13 +119,11 @@ const Information = ({ info }) => {
         <div className="games">
           {
             team.events.map((game, i) => (
-              <div key={i} className='game' onClick={() => {                
+              <div key={i} className='game' onClick={() => {
                 navigate(`/match/${game.id}`)
                 navigate(0)
-                
-                
               }}>
-                
+
 
                 <div className="left">
                   <div className="top">
@@ -156,9 +206,19 @@ const Information = ({ info }) => {
         "shootout" in info &&
         <div className='penalties'>
           <div className="title">
-            <div className='team'>{info.shootout[0].team}</div>
-            <div>Penales</div>
-            <div className='team'>{info.shootout[1].team}</div>
+            {/* <div className='team'>{info.shootout[0].team}</div> */}
+            <h3>Penales</h3>
+            {/* <div className='team'>{info.shootout[1].team}</div> */}
+          </div>
+
+          <div className="teams">
+            <div className='team'>
+
+              {info.shootout[0].team}
+            </div>
+            <div className='team'>
+              {info.shootout[1].team}
+            </div>
           </div>
 
           <div className="shootout-container">
@@ -191,10 +251,21 @@ const Information = ({ info }) => {
         </div>
       }
 
+      <div className="history">
 
+        <h2>Historial reciente</h2>
+
+        <div className="history-container">
+          {
+            info.headToHeadGames[0].events.map((e, i) => (
+              <HistoryMatch match_info={e} key={i} />
+            ))
+          }
+        </div>
+      </div>
 
       <div className="last-games">
-        <h2 className="title">Últimos 5 Partidos</h2>
+        <h2 className="title">Últimos Partidos</h2>
         <div className="teams-container">
 
           {<Team team={info.boxscore.form[0]} />}
