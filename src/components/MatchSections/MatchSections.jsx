@@ -27,7 +27,7 @@ const MatchSections = ({ match_data }) => {
     else if ("keyEvents" in match_data)
       set_navigation_tags(prev => [...prev, "Relato"])
 
-    if (match_data.boxscore.teams[0] .statistics.length > 0)
+    if ("statistics" in match_data.boxscore.teams[0] && match_data.boxscore.teams[0].statistics.length > 0)
       set_navigation_tags(prev => [...prev, "Estadísticas"])
 
     if (match_data.videos?.length )

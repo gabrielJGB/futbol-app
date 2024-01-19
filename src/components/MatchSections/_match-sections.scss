@@ -91,8 +91,8 @@
             text-align: center;
 
             .data {
-                
-                width:100%;
+
+                width: 100%;
                 font-size: 16px;
             }
 
@@ -113,20 +113,21 @@
         // padding: 5px 0 10px 0;
 
         .title {
-           margin:0 auto;    
-           
+            margin: 0 auto;
+
         }
 
-        .teams{
-            @include flex_config(flex, row, space-between, center,10px);
-            width:100%;
-            .team{
+        .teams {
+            @include flex_config(flex, row, space-between, center, 10px);
+            width: 100%;
+
+            .team {
                 margin-bottom: 7px
             }
         }
 
         .shootout-container {
-            @include flex_config(flex, row, space-between, baseline,10px);
+            @include flex_config(flex, row, space-between, baseline, 10px);
             width: 100%;
             font-size: 13px;
 
@@ -151,61 +152,71 @@
 
     }
 
-    .history{
+    .history {
         @include flex_config(flex, column, center, center, 20px);
-        width:70%;
+        width: 70%;
 
-        .history-container{
+        .history-container {
             @include flex_config(flex, column, center, center, 2px);
-            width:100%;
-            
-            
-            .match{
+            width: 100%;
+
+
+            .match {
                 @include flex_config(flex, column, center, center, 0px);
-                width:100%;
+                width: 100%;
                 background-color: $background-2;
-                padding:2px 0;
+                padding: 2px 0;
                 cursor: pointer;
                 transition: 0.2s;
-                .header{
-                    color:#b1b1b1;
+
+                .header {
+                    color: #b1b1b1;
                     font-size: 13px;
                 }
-                &:hover{
+
+                &:hover {
                     background-color: $background-3;
                 }
             }
-            .container{
+
+            .container {
                 @include flex_config(flex, row, center, center, 15px);
-                width:100%;
-                padding:5px 0;
-                .team{
+                width: 100%;
+                padding: 5px 0;
+
+                .team {
                     min-width: 40%;
                     @include flex_config(flex, row, center, center, 5px);
                     font-size: 15px;
-                    
-                    
-                }
-                .home{
-                    text-align: right;
-                    justify-content: end; 
-                }
-                .away{
-                    text-align: left;
-                    justify-content: start;  
+
+
                 }
 
-                .score{
-                    min-width:max-content;
+                .home {
+                    text-align: right;
+                    justify-content: end;
+                }
+
+                .away {
+                    text-align: left;
+                    justify-content: start;
+                }
+
+                .score {
+                    min-width: max-content;
                     text-align: center;
-                    font-size:26px;
+                    font-size: 26px;
                     font-weight: bold;
-                    .dash{margin:0 4px}
+
+                    .dash {
+                        margin: 0 4px
+                    }
+
                     // background-color: red
                 }
             }
         }
-        
+
     }
 
 
@@ -236,11 +247,11 @@
 
                 .game {
                     @include flex_config(flex, row, space-between, center, 10px);
-                    width:98%;
+                    width: 98%;
                     background-color: $background-2;
                     cursor: pointer;
                     transition: 0.2s;
-                    padding:2px 5px;
+                    padding: 2px 5px;
 
                     .left {
                         @include flex_config(flex, column, space-between, start, 0px);
@@ -255,7 +266,7 @@
                     .bottom {
                         @include flex_config(flex, row, start, center, 7px);
                         width: 100%;
-                        padding:3px 0
+                        padding: 3px 0
                     }
 
                     .right {
@@ -290,7 +301,7 @@
                     }
 
 
-                    &:hover{
+                    &:hover {
                         background-color: $background-3;
                     }
                 }
@@ -513,39 +524,43 @@
 }
 
 
-.stats_container{
-    @include flex_config(flex,column,center,center,10px);
+.stats_container {
+    @include flex_config(flex, column, center, center, 10px);
     position: relative;
-    margin:20px auto;
-    width:100%;
-    color:white;
-    .stat{
-        @include flex_config(flex,row,space-between,center,5px);
-        width:100%;
+    margin: 20px auto;
+    width: 100%;
+    color: white;
+
+    .stat {
+        @include flex_config(flex, row, space-between, center, 5px);
+        width: 100%;
         box-shadow: 0 1px 4px rgba(0, 0, 0, 0.699);
-        text-shadow: 1px  1px  1px black;
-        padding:6px 0;
+        text-shadow: 1px 1px 1px black;
+        padding: 6px 0;
         transition: all 0.3s;
-        .value{
-            padding:0 7px;
+
+        .value {
+            padding: 0 7px;
             z-index: 10;
             position: relative;
             text-align: center;
             font-size: 18px;
         }
-        .label{
+
+        .label {
             z-index: 10;
             position: relative;
-            color:rgb(238, 238, 238);
+            color: rgb(238, 238, 238);
             font-size: 15px;
-            
+
         }
-        .bg{
-            position:absolute;
-            padding:0px;
+
+        .bg {
+            position: absolute;
+            padding: 0px;
             z-index: 9;
-            width:0%;
-           height: 33px; 
+            width: 0%;
+            height: 33px;
             background-color: $background-4;
             transition: all 0.3s;
         }
@@ -592,12 +607,36 @@
         .last-games {
             width: 100%;
         }
-        .penalties{
-            width:100%
+
+        .penalties {
+            width: 100%
         }
-        .history{
-            width:100%
+
+        .history {
+            width: 100%;
+
+            .history-container {
+                .match {
+                    &:hover {
+                        background-color: $background-2
+                    }
+                }
+
+            }
         }
+
+        .last-games {
+            .teams-container {
+                .team {
+                    .game {
+                        &:hover {
+                            background-color: $background-2
+                        }
+                    }
+                }
+            }
+        }
+
     }
 
     .table_container {
@@ -643,11 +682,11 @@
 
     }
 
-    .stats_container{
-        
-        margin-bottom:50px;
-        width:100%;
- 
+    .stats_container {
+
+        margin-bottom: 50px;
+        width: 100%;
+
     }
 
 
