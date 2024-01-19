@@ -8,15 +8,6 @@ const Information = ({ info }) => {
   const navigate = useNavigate()
 
 
-
-  // console.log("INFO")
-  // console.log("Enfrentamientos previos", match_data.headToHeadGames[0].events.length) //con respecto al local
-  // console.log("Estadio",match_data.gameInfo.venue?.fullName)
-  // console.log("Ciudad",match_data.gameInfo.venue?.address?.city)
-  // console.log("Pais",match_data.gameInfo.venue?.address?.country)
-  // console.log("Espectadores","attendance" in match_data.gameInfo)
-  // console.log("Arbitro", "officials" in match_data.gameInfo)
-  // console.log("Penales", "shootout" in  match_data)
   console.log(info)
 
   const get_selector = (result) => {
@@ -74,7 +65,7 @@ const Information = ({ info }) => {
       away = info.headToHeadGames[0].team
 
     }
-    console.l
+    
 
     return (
       <div className="match"
@@ -178,7 +169,7 @@ const Information = ({ info }) => {
         {
           "venue" in info.gameInfo && "city" in info.gameInfo.venue.address &&
           <div className='info_box'>
-            <div className="data">{`${info.gameInfo.venue.address.city} ${"country" in info.gameInfo.venue.address?  ", " +info.gameInfo.venue.address.country:""}`}</div>
+            <div className="data">{`${info.gameInfo.venue.address.city}${"country" in info.gameInfo.venue.address ? ", " + info.gameInfo.venue.address.country : ""}`}</div>
             <div className="name">Ciudad</div>
           </div>
         }

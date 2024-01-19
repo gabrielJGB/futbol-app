@@ -1,4 +1,3 @@
-import { ConstructionOutlined, DatasetLinked } from '@mui/icons-material'
 import React, { createContext, useEffect, useState } from 'react'
 import { fetch_json } from '../utils/fetch_json'
 import { format_date } from '../utils/time'
@@ -16,25 +15,27 @@ export const DataContext = createContext({
     showing_leagues:null, 
     set_showing_leagues:()=>{},
     input_checked:null, 
-    set_input_checked:()=>{}
+    set_input_checked:()=>{},
+    selected_id:null,
+    set_selected_id:()=>{}
 
 })
 
 export function DataProvider({ children }) {
     const [loading, set_loading] = useState(true)
-    const [leagues, set_leagues] = useState(true)
+    const [leagues, set_leagues] = useState(false)
     const [selected_date, set_selected_date] = useState(false)
     const [date, set_date] = useState(new Date())
     const [showing_leagues, set_showing_leagues] = useState([])
     const [error,set_error ] = useState(false)
     const [input_checked, set_input_checked] = useState(true)
-    let interval = null
+    const [selected_id,set_selected_id] = useState(0)
 
+    let interval = null
+    
     const req = {  cache: 'no-store' }
     
-    
-    
-    
+
     
     const fetch_date_events = () => {
         let num =  "&=" + new Date().getTime()
@@ -145,7 +146,9 @@ useEffect(() => {
         date, set_date,
         error,
         showing_leagues, set_showing_leagues,
-        input_checked, set_input_checked
+        input_checked, set_input_checked,
+        selected_id,set_selected_id
+        
     
 
 

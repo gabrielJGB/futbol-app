@@ -9,11 +9,9 @@ import { DataContext } from '../../context/DataContext'
 
 const Home = () => {
 
+   
   const data = useContext(DataContext)
-
-
-
-
+    
 
 
   return (
@@ -25,22 +23,20 @@ const Home = () => {
           <div>Ha ocurrido un error</div>
           :
           <>
-            
-              <Navigation />
-              <Config />
-              <LeaguesNames />
-            
+            <Navigation />
+            <Config />
+            <LeaguesNames />
+
             {
               data.loading ?
                 <Spinner />
                 :
-
+                // .filter(l=>l.id===data.selected_id)
 
                 data.leagues.map((league, i) => (
-                  <LeagueEvents key={i} league={league} />
+                  <LeagueEvents  key={i} league={league} />
+
                 ))
-
-
             }
           </>
 
