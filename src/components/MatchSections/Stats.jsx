@@ -3,15 +3,7 @@ import React, { useEffect, useState } from 'react'
 const Stats = ({ info }) => {
 
   const [stats_arr, set_stats_arr] = useState(false)
-  // const [home_color, set_home_color] = useState({
-  //   color_1:"#"+info.header.competitions[0].competitors[0].team.color,
-  //   color_2:"#"+info.header.competitions[0].competitors[0].team.alternateColor
-  // })
 
-  // const [away_color, set_away_color] = useState({
-  //   color_1:"#"+info.header.competitions[0].competitors[1].team.color,
-  //   color_2:"#"+info.header.competitions[0].competitors[1].team.alternateColor
-  // })
 
   useEffect(() => {
 
