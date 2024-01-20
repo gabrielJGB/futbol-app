@@ -25,7 +25,7 @@ const Home = () => {
           <>
             <Navigation />
             <Config />
-            <LeaguesNames />
+            {/* <LeaguesNames /> */}
 
             {
               data.loading ?
