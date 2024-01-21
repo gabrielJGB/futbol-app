@@ -17,13 +17,13 @@ const Lineups = ({ info }) => {
   const [home_selected, set_home_selected] = useState(true)
 
   const [info_home, set_info_home] = useState({
-    logo: ("logos" in info.header.competitions[0].competitors[0].team? info.header.competitions[0].competitors[0].team.logos[0].href : escudo),
+    logo: ("logos" in info.header.competitions[0].competitors[0].team ? info.header.competitions[0].competitors[0].team.logos[0].href : escudo),
     name: info.header.competitions[0].competitors[0].team.displayName,
     formation: info.rosters[0].formation
   })
 
   const [info_away, set_info_away] = useState({
-    logo: ("logos" in info.header.competitions[0].competitors[1].team? info.header.competitions[0].competitors[1].team.logos[0].href : escudo),
+    logo: ("logos" in info.header.competitions[0].competitors[1].team ? info.header.competitions[0].competitors[1].team.logos[0].href : escudo),
     name: info.header.competitions[0].competitors[1].team.displayName,
     formation: info.rosters[1].formation
   })
@@ -31,8 +31,6 @@ const Lineups = ({ info }) => {
 
   useEffect(() => {
     console.log(info)
-
-
   }, [])
 
 
@@ -73,11 +71,27 @@ const Lineups = ({ info }) => {
     )
   }
 
+  const get_border_color = (position) => {
+
+    if (position.displayName === "Arquero")
+      return "orange"
+
+    else if (position.displayName.includes("Defensor") || position.displayName.includes("Lateral") || position.displayName.includes("defensivo")  || position.displayName.includes("Líbero") )
+      return "#0064ff"
+
+    else if (position.displayName.includes("Mediocampista"))
+      return "#00b500"
+
+    else if (position.displayName.includes("Atacante")|| position.displayName.includes("Enganche"))
+      return "red"
+  }
+  
+
 
   const Player = ({ player }) => {
 
     return (
-      <div className="player">
+      <div className="player" style={{ borderLeftColor: ("position" in  player && get_border_color(player.position)) }}>
         <PosContainer player={player} />
         <div className="jersey">{player.jersey}</div>
         <div className="name">{player.athlete.displayName}</div>
