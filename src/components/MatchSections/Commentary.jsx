@@ -36,6 +36,8 @@ const Commentary = ({ info }) => {
         return "gol"
       case '173':
         return "gol"
+	case '97':
+        return "gol"
       case '93':
         return 'roja'
       default:
