@@ -1,19 +1,20 @@
 .league-events_container {
-    @include flex_config(flex, column, center, center, 0);
+    @include flex_config(flex, column, center, center,0px);
     width: 40%;
     // border: solid 1px #000000;
     // border-radius: 5px;
-    margin-bottom: 45px;
+    margin-bottom: 40px;
     // border-bottom: solid 1px rgb(31, 48, 73);
     background-color: $background-3;
     box-shadow: 0 1px 4px black;
+
     .league-header {
         @include flex_config(flex, row, center, center, 0);
         width: 97%;
 
         .league-name {
             text-align: center;
-            font-size: 19px;
+            font-size: 18px;
             padding: 5px 0;
         }
 

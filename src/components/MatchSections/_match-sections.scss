@@ -26,6 +26,7 @@
             border-bottom: solid 2px transparent;
             background-color: $background-3;
             transition: 0.2s;
+            border-radius: 2px;
 
             &:hover {
                 background-color: $background-2;
@@ -45,30 +46,84 @@
 
 .commentary_container {
 
-    @include flex_config(flex, column-reverse, flex-start, center, 7px);
+    @include flex_config(flex, column-reverse, flex-start, center, 15px);
     width: 100%;
     margin: 10px 0 100px 0;
-    // color:#dbdbdb;
+    color:#dbdbdb;
     // color:$background-3;
 
     .comment_box {
-        @include flex_config(flex, row, flex-start, center, 10px);
-        width: -webkit-fill-available;
 
+        @include flex_config(flex,column,center,start,5px);
+        width:95%;
         background-color: $background-2;
-        border: solid 2px $background-3;
-        // box-shadow: 0 1px 4px black;
-        color: #dbdbdb;
-        border-radius: 2px;
-        padding: 7px;
-
-        .minute {
-            font-size: 22px;
+        padding:10px ;
+        border-radius: 5px;
+        
+        .header{
+            @include flex_config(flex,row,start,center,6px);
+            width:100%;
+            font-weight: bold;
+            font-size: 16px;
+            
+            .minute{
+                color:black;
+                background-color: white;
+                padding:2px 3px;
+                border-radius: 5px;
+            }
         }
 
-        .comment {
-            font-size: 15px;
+        .gol{
+            color:lime;
+            .minute{ background-color: lime;}
         }
+
+        .roja{
+            color:rgb(255, 0, 0);
+            .minute{ background-color: rgb(255, 37, 37);}
+        }
+
+        .amarilla{
+            color:rgb(251, 255, 0);
+            .minute{ background-color: rgb(251, 255, 0);}
+        }
+
+
+        .comment{
+            margin-top: 7px;
+            font-size: 14px;
+        }
+
+        .players{
+            @include flex_config(flex,column,start,start,7px);
+            margin-top:2px;
+            .player{
+                @include flex_config(flex,row,start,center,7px);
+                width:100%;
+                font-size: 14px;
+                padding:6px ;
+                background-color: $background-1;
+                border-radius: 5px
+            }
+        }
+
+        // @include flex_config(flex, row, flex-start, center, 10px);
+        // width: -webkit-fill-available;
+
+        
+        
+        // color: #dbdbdb;
+        // border-radius: 5px;
+        // padding: 7px;
+
+        // .minute {
+        //     font-size: 22px;
+        // }
+
+        // .comment {
+        //     font-size: 15px;
+        // }
     }
 
 }
@@ -505,20 +560,20 @@
 
     .video {
         margin: 20px 0;
-
+        padding: 0 2px;
         .video-title {
-            text-align: center;
+            text-align: start;
             color: rgb(241, 241, 241);
-            margin-bottom: 5px;
+            margin-bottom: 7px;
             font-size: 19px;
         }
 
         .video-description {
 
             color: rgb(209, 209, 209);
-            font-size: 13px;
-            padding: 0 3px;
-            margin-bottom: 5px;
+            font-size: 12px;
+            
+            margin-bottom: 7px;
         }
 
         .video-tag {
@@ -529,46 +584,62 @@
 
 
 .stats_container {
-    @include flex_config(flex, column, center, center, 10px);
-    position: relative;
-    margin: 20px auto;
-    width: 100%;
-    color: white;
 
-    .stat {
-        @include flex_config(flex, row, space-between, center, 5px);
-        width: 100%;
-        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.699);
-        text-shadow: 1px 1px 1px black;
-        padding: 6px 0;
-        transition: all 0.3s;
-
-        .value {
-            padding: 0 7px;
-            z-index: 10;
-            position: relative;
-            text-align: center;
-            font-size: 18px;
-        }
-
-        .label {
-            z-index: 10;
-            position: relative;
-            color: rgb(238, 238, 238);
-            font-size: 15px;
-
-        }
-
-        .bg {
-            position: absolute;
-            padding: 0px;
-            z-index: 9;
-            width: 0%;
-            height: 33px;
-            background-color: $background-4;
-            transition: all 0.3s;
-        }
+    @include flex_config(flex,column,center,center,0);
+    width:100%;
+    margin-top:10px;
+    color:white;
+    .stat{
+        @include flex_config(flex,column,center,center,3px);
+        width:98%;
     }
+    .title{
+        font-size: 15px
+    }
+    .container{
+        @include flex_config(flex,row,space-between,center,5px);
+        background-color: rgba(0, 0, 0, 0.205);
+        border-radius: 5px;
+        padding: 1px 5px;
+        width:100%;
+        margin-bottom:10px;
+        
+        .team{
+            width:100%;
+            @include flex_config(flex,row,space-between,center,5px);
+        }
+        .home{
+            flex-direction: row;
+            
+        }
+        .away{
+            flex-direction: row-reverse;
+            
+        }
+        
+        .bar{
+            height:8px;
+            transition: width 0.15s;
+            
+        }
+        .home-bar{
+            width:0%;
+            background-color: rgb(58, 134, 221);
+            border-bottom-left-radius: 2px;
+            border-top-left-radius: 2px;
+            
+        }
+        .away-bar{
+            width:0%;
+            background-color: rgb(85, 184, 85);
+            border-bottom-right-radius: 2px;
+            border-top-right-radius: 2px;
+            
+        }
+
+    }
+    
+
 }
 
 @media screen and (max-width:800px) {
@@ -693,5 +764,16 @@
 
     }
 
+    .commentary_container {
+
+        gap:8px !important;
+        .comment_box{
+            .header{
+                .team{
+                    display:none
+                }
+            }
+        }
+    }
 
 }

@@ -1,12 +1,12 @@
 .event-card_container {
 
-    @include flex_config(flex, column, center, center, 0);
+    @include flex_config(flex, column, center, center, 0px);
     width: -webkit-fill-available;
-    padding-bottom: 4px;
-    margin: 0 7px 7px 7px;
-    border-radius: 3px;
-    border:solid 1px  $background-6;
+    // border-radius: 3px;
+    // border:solid 1px  $background-6;
+    margin:0 1px 1px 1px;
     background-color: $background-2;
+    padding-bottom: 3px;
 
     &:hover {
         transition: all 0.2s;

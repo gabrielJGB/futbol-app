@@ -120,11 +120,11 @@ const Information = ({ info }) => {
                   <div className="top">
 
 
-                    <div className="title">{game.leagueName}</div>
+                    <div className="title">{format_game_date(game.gameDate)} - {game.leagueName}</div>
                   </div>
                   <div className="bottom">
                     <div className="vsAt">{(game.atVs === "en" ? "(V)" : "(L)")}</div>
-                    <div className="date">{format_game_date(game.gameDate)}</div>
+                    
                     <img src={"logo" in game.opponent ? game.opponent.logo : escudo} alt="" width={IMG_SIZE} height={IMG_SIZE} />
                     <div className="opponent">{game.opponent.displayName}</div>
 

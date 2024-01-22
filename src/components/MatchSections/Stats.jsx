@@ -25,11 +25,6 @@ const Stats = ({ info }) => {
 
     const [home_width, set_home_width] = useState(0)
     const [away_width, set_away_width] = useState(0)
-    const home_color = "rgb(49 83 127)"
-    const away_color = "rgb(38 97 38)"
-    const bg_color = "rgb(40 40 40)"
-
-
 
     const get_label = (label) => {
 
@@ -122,13 +117,20 @@ const Stats = ({ info }) => {
 
 
     return (
-      <div className="stat" style={{ backgroundColor: ( away_width === 0 && home_width === 0? bg_color:(away_width < home_width ? bg_color : away_color)) }}>
-        <div className="value home-value">{stat.home_value}</div>
-        <div className="label">{get_label(stat.label)}</div>
-        <div className="value away-value">{stat.away_value}</div>
-        <div className="bg" style={{ width: (home_width + "%"), backgroundColor: ( away_width > home_width  ? bg_color : home_color) }}></div>
-      </div>
 
+      <div className="stat">
+        <div className="title">{get_label(stat.label)}</div>
+        <div className="container">
+          <div className="team home">
+            <div className="num">{stat.home_value}</div>
+            <div className="bar home-bar" style={{width: (home_width + "%")}}></div>
+          </div>
+          <div className="team away">
+            <div className="num">{stat.away_value}</div>
+            <div className="bar away-bar" style={{width: (away_width + "%")}}></div>
+          </div>
+        </div>
+      </div>
 
     )
   }
@@ -141,6 +143,7 @@ const Stats = ({ info }) => {
           <StatRow key={i} stat={stat} />
         ))
       }
+
     </div>
   )
 }

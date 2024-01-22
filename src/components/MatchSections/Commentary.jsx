@@ -1,54 +1,88 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { DataContext } from '../../context/DataContext'
 import Toggle from '../Toggle/Toggle'
-
+import arrow_in from '../../assets/arrow-in.png'
+import arrow_out from '../../assets/arrow-out.png'
 
 const Commentary = ({ info }) => {
 
   const data = useContext(DataContext)
-
-  // const [commentary_arr, set_commentary_arr] = useState([])
-  // const [key_events_arr, set_key_events_arr] = useState([])
-
   const [comments_available, set_comments_available] = useState("commentary" in info)
   const [key_events_available, set_key_events_available] = useState("keyEvents" in info)
 
+  const imgs = [arrow_in, arrow_out]
+  const IMG_SIZE = 12
 
-  // const toggle = useRef()
 
   useEffect(() => {
-    // console.log(info)
 
-    // if ("commentary" in info)
-    //   set_commentary_arr(info.commentary)
-
-    // if ("keyEvents" in info)
-    //   set_key_events_arr(info.keyEvents)
-
-
+    console.log(info)
   }, [])
 
-  // const [selected, set_selected] = useState(1)
-  // const handle_toggle = () => {
-  //   if (toggle.current.children[0].className.includes("selected")) {
-  //     toggle.current.children[0].className = "element"
-  //     toggle.current.children[1].className = "element selected"
 
-  //   } else {
-  //     toggle.current.children[0].className = "element selected"
-  //     toggle.current.children[1].className = "element"
 
-  //   }
-  //   set_selected(toggle.current.children[0].className.includes("selected") ? 0 : 1)
-  // }
+  const get_color_selector = (id) => {
+
+    switch (id) {
+      case '94':
+        return "amarilla"
+      case '':
+        return "roja"
+      case '98':
+        return "gol"
+      case '137':
+        return "gol"
+      case '70':
+        return "gol"
+      case '173':
+        return "gol"
+      case '93':
+        return 'roja'
+      default:
+        return ""
+
+    }
+  }
 
 
   const Commentary_map = ({ comments }) => {
     return (
       comments?.map((comment, i) => (
         <div key={i} className="comment_box">
-          <div className="minute"> {comment.time.displayValue} </div>
-          <div className='comment'> {comment.text} </div>
+
+          <div className={`header ${get_color_selector("play" in comment && "type" in comment.play && comment.play.type.id)}`}  >
+            <div className="minute"> {comment.time.displayValue} </div>
+            <div className="title">{"play" in comment && "type" in comment.play && comment.play.type.text.replace("Sustitución","Cambio")}</div>
+
+            <div className="team">
+              {
+                "play" in comment && "team" in comment.play &&
+                <>
+                  <span>-</span>
+                  <span> {comment.play.team.displayName}</span>
+                </>
+              }
+            </div>
+          </div>
+
+          <div className='comment'>
+            {comment.text}
+          </div>
+
+
+          {
+            "play" in comment && "type" in comment.play && comment.play.type.id === "76" &&
+            <div className="players">
+              {"participants" in comment.play && comment.play.participants.map((participant, i) => (
+                <div key={i} className="player">
+                  <img src={imgs[i]} width={IMG_SIZE} height={IMG_SIZE} alt="Cambio" />
+                  <div className="name">{participant.athlete.displayName}</div>
+                </div>
+              ))}
+            </div>
+          }
+
+
         </div>
       ))
     )
@@ -58,8 +92,25 @@ const Commentary = ({ info }) => {
     return (
       key_events?.map((comment, i) => (
         <div key={i} className="comment_box">
-          <div className="minute"> {comment.clock.displayValue} </div>
+          <div className={`header ${get_color_selector(comment.type.id)}`}  >
+            <div className="minute"> {comment.clock.displayValue} </div>
+            <div className="title">{comment.type.text}</div>
+          </div>
+
           <div className='comment'> {"text" in comment ? comment.text : comment.type.text} </div>
+
+          {
+            comment.type.id === "76" &&
+            <div className="players">
+              {"participants" in comment && comment.participants.map((participant, i) => (
+                <div key={i} className="player">
+                  <img src={imgs[i]} width={IMG_SIZE} height={IMG_SIZE} alt="Cambio" />
+                  <div className="name">{participant.athlete.displayName}</div>
+                </div>
+              ))}
+            </div>
+          }
+
         </div>
       ))
 
@@ -101,63 +152,6 @@ const Commentary = ({ info }) => {
       <div className="commentary_container">
         {get_selected()}
       </div>
-
- 
-      {/* {
-        "commentary" in info && "keyEvent" in info ?
-          <Toggle />
-          :
-          data.input_checked ?
-            commentary_arr?.map((comment, i) => (
-              <div key={i} className="comment_box">
-                <div className="minute"> {comment.time.displayValue} </div>
-                <div className='comment'> {comment.text} </div>
-              </div>
-            ))
-            :
-
-            key_events_arr?.map((comment, i) => (
-              <div key={i} className="comment_box">
-                <div className="minute"> {comment.clock.displayValue} </div>
-                <div className='comment'> {"text" in comment ? comment.text : comment.type.text} </div>
-              </div>
-            ))
-      } */}
-
-
-      {/* {
-        data.input_checked &&
-
-        <div> 2222</div>
-
-      } */}
-
-      {/* 
-
-      <div className="commentary_container">
-        {
-          selected === 1 ?
-
-            commentary_arr?.map((comment, i) => (
-              <div key={i} className="comment_box">
-                <div className="minute"> {comment.time.displayValue} </div>
-                <div className='comment'> {comment.text} </div>
-              </div>
-            ))
-
-
-            :
-
-            key_events_arr?.map((comment, i) => (
-              <div key={i} className="comment_box">
-                <div className="minute"> {comment.clock.displayValue} </div>
-                <div className='comment'> {"text" in comment ? comment.text : comment.type.text} </div>
-              </div>
-            ))
-
-        }
-
-      </div> */}
 
     </div>
   )
