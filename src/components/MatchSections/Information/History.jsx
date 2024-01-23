@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { escudo } from '../../../assets'
 import { format_game_date} from '../../../utils/time'
 const IMG_SIZE = 29
 
@@ -51,9 +52,7 @@ const History = ({ info }) => {
                         <div className="name">{away.displayName}</div>
                     </div>
                 </div>
-                {/* <div>{home.displayName}</div>
-            vs
-            <div>{away.displayName}</div> */}
+
             </div>
         )
     }

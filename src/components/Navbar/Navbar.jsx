@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { DataContext } from '../../context/DataContext'
 import { get_time_selected } from '../../utils/time'
 
 
 const Navbar = () => {
   const navigate = useNavigate()
+  const location = useLocation()
   const data = useContext(DataContext)
+
 
   return (
     <div
@@ -20,8 +22,8 @@ const Navbar = () => {
         >Fútbol 11</div>
 
         {
-        get_time_selected(data.date) == "Hoy" &&
-        <div className="btn-container">
+        get_time_selected(data.date) == "Hoy" ?
+        <div className="btn-container" style={{display:(location.pathname != "/" && "none")}}>
           <div></div>
           <button
             className={`live-btn ${data.show_only_playing && "selected"}`}
@@ -30,6 +32,8 @@ const Navbar = () => {
             }}
           >Live</button>
         </div>
+        :
+        <div></div>
 
       }
 

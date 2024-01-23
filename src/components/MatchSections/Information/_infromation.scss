@@ -109,8 +109,8 @@
                 .team {
                     @include flex_config(flex, row, center, center, 5px);
                     min-width: 40%;
-                    font-size: 14px;
-                    padding: 5px ;
+                    font-size: 13px;
+                    padding: 5px 0;
 
                 }
 
@@ -242,6 +242,7 @@
         margin-bottom: 50px;
 
         .last-games {
+            
             width: 100%;
         }
 
@@ -253,7 +254,11 @@
             width: 100%;
 
             .history-container {
+                .team{
+                    font-size: 11px;
+                }
                 .match {
+                    
                     &:hover {
                         background-color: $background-2
                     }
@@ -265,6 +270,7 @@
         .last-games {
             .teams-container {
                 .team {
+                    min-width: 20%;
                     .game {
                         &:hover {
                             background-color: $background-2
