@@ -1,24 +1,54 @@
-.config_container{
-    @include flex_config(flex,row,center,center,5px);
-    padding:5px 0;
-    width:98%;
-    .calendar{
-        cursor:pointer;
-        input{
-            padding:3px 0;
+.config_container {
+    @include flex_config(flex, row, center, center, 5px);
+    padding: 5px 0;
+    width: 100%;
+
+    .calendar {
+        
+        cursor: pointer;
+
+        input {
+            padding: 3px 0;
             text-align: center;
         }
-        button{
+
+        button {
             margin-left: 4px;
-            padding:7px 23px;
-            border:0;
+            padding: 7px 23px;
+            border: 0;
             cursor: pointer;
             background-color: $background-3;
-            color:white;
-            &:hover{
+            color: white;
+
+            &:hover {
                 background-color: $background-4;
             }
         }
 
     }
+
+    // .btn-container {
+    //     @include flex_config(flex, row, space-between, center, 5px);
+    //     width: 98%;
+
+    //     .live-btn {
+    //         background-color: $background-3;
+    //         color: rgb(228, 228, 228);
+    //         border: 0;
+    //         padding: 5px 6px;
+    //         font-size: 12px;
+    //         cursor: pointer;
+    //         border: solid 1px rgb(77, 77, 77);
+    //         outline: none;
+    //     }
+
+    //     .selected {
+    //         background-color: rgb(90, 0, 0) !important;
+    //         border: solid 1px rgb(119, 18, 18);
+    //     }
+
+    // }
 }
+
+
+

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import escudo from '../../assets/escudo.png'
+import { escudo } from '../../../assets'
 
 const Tables = ({ info }) => {
 

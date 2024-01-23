@@ -1,0 +1,68 @@
+.stats_container {
+
+    @include flex_config(flex,column,center,center,0);
+    width:100%;
+    margin-top:10px;
+    color:white;
+    .stat{
+        @include flex_config(flex,column,center,center,3px);
+        width:98%;
+    }
+    .title{
+        font-size: 15px
+    }
+    .container{
+        @include flex_config(flex,row,space-between,center,5px);
+        background-color: rgba(0, 0, 0, 0.205);
+        border-radius: 5px;
+        padding: 1px 5px;
+        width:100%;
+        margin-bottom:10px;
+        
+        .team{
+            width:100%;
+            @include flex_config(flex,row,space-between,center,5px);
+        }
+        .home{
+            flex-direction: row;
+            
+        }
+        .away{
+            flex-direction: row-reverse;
+            
+        }
+        
+        .bar{
+            height:8px;
+            transition: width 0.15s;
+            
+        }
+        .home-bar{
+            width:0%;
+            background-color: rgb(58, 134, 221);
+            border-bottom-left-radius: 2px;
+            border-top-left-radius: 2px;
+            
+        }
+        .away-bar{
+            width:0%;
+            background-color: rgb(85, 184, 85);
+            border-bottom-right-radius: 2px;
+            border-top-right-radius: 2px;
+            
+        }
+
+    }
+
+}
+
+
+@media screen and (max-width:800px){
+    .stats_container {
+
+        margin-bottom: 50px;
+        width: 100%;
+
+    }
+
+}

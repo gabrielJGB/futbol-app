@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import Information from './Information'
-import Lineups from './Lineups'
-import Commentary from './Commentary'
-import Stats from './Stats'
-import Tables from './Tables'
-import Videos from './Videos'
+import Information from './Information/Information'
+import Lineups from './Lineups/Lineups'
+import Commentary from './Commentary/Commentary'
+import Stats from './Stats/Stats'
+import Tables from './Tables/Tables'
+import Videos from './Videos/Videos'
 import Spinner from '../Spinner/Spinner'
 
 const MatchSections = ({ match_data }) => {
 
-  const [loading, set_loading] = useState(false)
   const [navigation_tags, set_navigation_tags] = useState([])
   const [selected_tab, set_selected_tab] = useState("Información")
 
 
   useEffect(() => {
-    
 
     set_navigation_tags(["Información"])
 
@@ -30,34 +28,11 @@ const MatchSections = ({ match_data }) => {
     if ("statistics" in match_data.boxscore.teams[0] && match_data.boxscore.teams[0].statistics.length > 0)
       set_navigation_tags(prev => [...prev, "Estadísticas"])
 
-    if (match_data.videos?.length )
+    if (match_data.videos?.length)
       set_navigation_tags(prev => [...prev, "Videos"])
 
-    if (match_data.standings.groups.length && match_data.standings.groups[0].standings.entries.length) 
+    if (match_data.standings.groups.length && match_data.standings.groups[0].standings.entries.length)
       set_navigation_tags(prev => [...prev, "Tablas"])
-
-
-
-
-
-
-    // console.log("Formaciones","roster" in match_data.rosters[0])
-    // console.log("Videos", match_data.videos?.length?true:false)
-    // console.log("Comentarios","commentary" in match_data)
-    // console.log("Eventos clave","keyEvents" in match_data)
-    // console.log("Tabla", match_data.standings.groups.length?true:false)
-    // console.log("Estadisticas", "statistics" in match_data.boxscore.teams[0])
-
-
-    // console.log("INFO")
-    // console.log("Enfrentamientos previos", match_data.headToHeadGames[0].events.length) //con respecto al local
-    // console.log("Estadio",match_data.gameInfo.venue?.fullName)
-    // console.log("Ciudad",match_data.gameInfo.venue?.address?.city)
-    // console.log("Pais",match_data.gameInfo.venue?.address?.country)
-    // console.log("Espectadores","attendance" in match_data.gameInfo)
-    // console.log("Arbitro", "officials" in match_data.gameInfo)
-    // console.log("Penales", "shootout" in  match_data)
-
 
   }, [])
 
@@ -67,7 +42,7 @@ const MatchSections = ({ match_data }) => {
   const get_section = (selected_tab) => {
     switch (selected_tab) {
       case "Información":
-        return <Information info={match_data}/>
+        return <Information info={match_data} />
       case "Formaciones":
         return <Lineups info={match_data} />
       case "Relato":

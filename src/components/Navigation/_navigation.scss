@@ -1,90 +1,103 @@
-.navigation_container{
-    @include flex_config(flex,column,center,center,0);
-    margin-top:20px;
-    width:100%;
+.navigation_container {
+    @include flex_config(flex, column, center, center, 0);
+    margin-top: 20px;
+    width: 100%;
     margin-bottom: 10px;
     position: sticky;
-    top:0;
+    top: 0;
 
 }
 
-.navigation_main{
-    @include flex_config(flex,row,space-between,center,0);
-    
+.navigation_main {
+    @include flex_config(flex, row, space-between, center, 0);
+
     width: 40%;
-    position:relative;
-    top:0;
+    position: relative;
+    top: 0;
     z-index: 9;
     background-color: $background-3;
     box-shadow: 0 1px 4px black;
-    
-    div{
-        @include flex_config(flex,row,center,center,0);
+
+    div {
+        @include flex_config(flex, row, center, center, 0);
         cursor: pointer;
         min-height: 35px;
-        color:$background-7;
+        color: $background-7;
         font-size: 15px;
-        width:33.33%;
+        width: 33.33%;
         transition: all 0.2s;
-        &:hover{
+
+        &:hover {
             background-color: $background-2;
         }
     }
-    .center{
-        color:white;
+
+    .center {
+        cursor: default;
+        color: white;
         border-bottom: solid 2px rgba(255, 255, 255, 0.719);
+
+        &:hover {
+            background-color: unset;
+        }
     }
-    
+
 }
 
-.navigation_date-input{
-    @include flex_config(none,row,center,center,6px);
-    width:40%;
-    
-    padding:12px 0;
-    input{
-        width:25%;
-        padding:5px;
+.navigation_date-input {
+    @include flex_config(none, row, center, center, 6px);
+    width: 40%;
+
+    padding: 12px 0;
+
+    input {
+        width: 25%;
+        padding: 5px;
         border-radius: 5px;
         text-align: center;
-        cursor:pointer;
-        border:0;
-        
-        color:white !important;
-        font-size: 17px;   
-        outline:none;
+        cursor: pointer;
+        border: 0;
+
+        color: white !important;
+        font-size: 17px;
+        outline: none;
     }
-    .date-btn{
+
+    .date-btn {
         background-color: #334459;
-        border:0;
-        cursor:pointer;
-        color:white;
+        border: 0;
+        cursor: pointer;
+        color: white;
         width: 24%;
-        padding:8px 0;
+        padding: 8px 0;
         border-radius: 5px;
     }
 }
 
-@media screen and (max-width:800px){
-    .navigation_container{
-        margin-top:0;
+@media screen and (max-width:800px) {
+    .navigation_container {
+        margin-top: 0;
     }
-    .navigation_main{
-        
-        width:100%;
-        div{
+
+    .navigation_main {
+
+        width: 100%;
+
+        div {
             font-size: 14px;
             min-height: 45px;
 
 
         }
-        div:hover{
+
+        div:hover {
             background-color: unset;
 
         }
-        
-    }  
-    .arrow:hover{
+
+    }
+
+    .arrow:hover {
         background-color: unset;
-    }  
+    }
 }

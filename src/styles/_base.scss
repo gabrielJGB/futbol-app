@@ -6,4 +6,6 @@
 body {
     font-family: 'Arial', sans-serif;
     background-color: $background-1;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
 }

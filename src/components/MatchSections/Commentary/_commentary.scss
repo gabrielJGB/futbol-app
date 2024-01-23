@@ -1,0 +1,85 @@
+
+.commentary_container {
+
+    @include flex_config(flex, column-reverse, flex-start, center, 15px);
+    width: 100%;
+    margin: 10px 0 100px 0;
+    color:#dbdbdb;
+    // color:$background-3;
+
+    .comment_box {
+
+        @include flex_config(flex,column,center,start,5px);
+        width:95%;
+        background-color: $background-2;
+        padding:10px ;
+        border-radius: 5px;
+        
+        .header{
+            @include flex_config(flex,row,start,center,6px);
+            width:100%;
+            font-weight: bold;
+            font-size: 16px;
+            
+            .minute{
+                color:black;
+                background-color: white;
+                padding:2px 3px;
+                border-radius: 5px;
+            }
+        }
+
+        .gol{
+            color:lime;
+            .minute{ background-color: lime;}
+        }
+
+        .roja{
+            color:rgb(255, 37, 37);
+            .minute{ background-color: rgb(255, 37, 37);}
+        }
+
+        .amarilla{
+            color:rgb(251, 255, 0);
+            .minute{ background-color: rgb(251, 255, 0);}
+        }
+
+
+        .comment{
+            margin-top: 7px;
+            font-size: 14px;
+        }
+
+        .players{
+            @include flex_config(flex,column,start,start,7px);
+            margin-top:2px;
+            .player{
+                @include flex_config(flex,row,start,center,7px);
+                width:100%;
+                font-size: 14px;
+                padding:6px ;
+                background-color: $background-1;
+                border-radius: 5px
+            }
+        }
+
+
+    }
+
+}
+
+
+@media screen and (max-width:800px){
+    .commentary_container {
+
+        gap: 8px !important;
+
+        .comment_box {
+            .header {
+                .team {
+                    display: none
+                }
+            }
+        }
+    }
+}

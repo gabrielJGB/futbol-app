@@ -1,4 +1,6 @@
 .navbar_container{
+    @include flex_config(flex,row,space-between,center,0);
+    
     position:relative;
     z-index: 10;
     color:$color-2;
@@ -6,7 +8,24 @@
     padding:10px 20px;
     font-size: 17px;
     .header{
-        width: max-content;
-        cursor: pointer;
+        @include flex_config(flex,row,space-between,center,0);
+        width:100%;
+        .title{ cursor: pointer;}
+        .live-btn {
+            background-color: $background-2;
+            color: rgb(228, 228, 228);
+            border: 0;
+            padding: 6px 8px;
+            font-size: 12px;
+            cursor: pointer;
+            border: solid 1px $background-5;
+            outline: none;
+        }
+
+        .selected {
+            background-color: rgb(90, 0, 0) !important;
+            border: solid 1px rgb(119, 18, 18);
+        }
+
     }
 }

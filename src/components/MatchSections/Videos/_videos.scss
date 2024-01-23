@@ -1,0 +1,38 @@
+.videos_container {
+    @include flex_config(flex, column, center, center, 4px);
+
+    .video {
+        margin: 20px 0;
+        padding: 0 2px;
+        .video-title {
+            text-align: start;
+            color: rgb(241, 241, 241);
+            margin-bottom: 7px;
+            font-size: 19px;
+        }
+
+        .video-description {
+
+            color: rgb(209, 209, 209);
+            font-size: 12px;
+            
+            margin-bottom: 7px;
+        }
+
+        .video-tag {
+            width: 100%;
+        }
+    }
+}
+
+
+@media screen and (max-width:800px){
+    .videos_container {
+        .video {
+            margin-top: 0px
+        }
+    }
+
+  
+ 
+}

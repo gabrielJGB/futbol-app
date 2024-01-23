@@ -8,13 +8,7 @@ const Navigation = (props) => {
   const [previous_date, set_previous_date] = useState('')
   const [next_date, set_next_date] = useState('')
 
-  // const [date, setDate] = useState(false);
-  // const onDateChange = (event) => {
-  //   event.preventDefault()
-  //   setDate(event.target.value);
 
-  //   data.set_date(get_time_selected(event.target.value))
-  // };
 
   useEffect(() => {
     if (data.date) {
@@ -25,7 +19,6 @@ const Navigation = (props) => {
     }
 
   }, [data.date])
-
 
 
   return (
@@ -53,9 +46,7 @@ const Navigation = (props) => {
         </div>
 
 
-        <div className="center"
-          onClick={() => data.set_date(new Date().getTime())}
-        >
+        <div className="center">
           {get_time_selected(data.date)}
         </div>
 

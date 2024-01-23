@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import arrow_in from '../../assets/arrow-in.png'
-import arrow_out from '../../assets/arrow-out.png'
-import red from '../../assets/red.png'
-import yellow from '../../assets/yellow.png'
-import penalty from '../../assets/penal.png'
-import goal from '../../assets/goal.png'
-import ownGoal from '../../assets/own-goal.png'
-import boot from '../../assets/boot.png'
-import escudo from '../../assets/escudo.png'
+import {
+  arrow_in, 
+  arrow_out,
+  red,
+  yellow,
+  penal,
+  goal,
+  own_goal,
+  boot,
+  escudo } from '../../../assets'
 
 const Lineups = ({ info }) => {
   const IMG_SIZE_1 = 22
@@ -37,9 +38,9 @@ const Lineups = ({ info }) => {
   const get_play_img = (play, p_in, p_out) => {
 
     if (play.penaltyKick)
-      return penalty
+      return penal
     else if (play.ownGoal)
-      return ownGoal
+      return own_goal
     else if (play.didScore)
       return goal
     else if (play.didAssist)

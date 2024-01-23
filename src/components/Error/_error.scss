@@ -1,0 +1,23 @@
+.error{
+    @include flex_config(flex,column,center,center,20px);
+    width:100%;
+    margin: 20px auto;
+    
+
+    .text{
+        color:white;
+        font-size: 19px;
+    }
+
+    .error-button{
+        background-color: rgb(255, 255, 255);
+        border:0;
+        cursor: pointer;
+        padding:10px ;
+        font-size: 14px;
+        border-radius: 3px;
+        &:hover{
+            background-color: rgb(231, 231, 231);
+        }
+    }
+}

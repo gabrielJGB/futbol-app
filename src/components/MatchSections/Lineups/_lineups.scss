@@ -1,0 +1,147 @@
+.lineups_container {
+
+    @include flex_config(flex, column, center, center, 10px);
+    margin: 0 auto;
+
+    width: 100%;
+
+    .switch-container {
+
+        @include flex_config(flex, row, center, center, 0);
+        padding: 10px 0 3px 0;
+        width: 100%;
+
+        .switch {
+            @include flex_config(flex, row, center, center, 0px);
+
+            width: max-content;
+            color: $background-4;
+            background-color: $background-1;
+
+            .element {
+                @include flex_config(flex, row, center, center, 5px);
+                cursor: pointer;
+                padding: 7px 9px;
+                border: solid 1px $background-4;
+
+            }
+
+            .selected {
+                background-color: $background-4;
+                color: white;
+            }
+        }
+    }
+
+    .teams-container {
+
+        width: 100%;
+    }
+
+    .team {
+        @include flex_config(flex, row, center, baseline, 25px);
+    }
+
+    .players {
+        @include flex_config(flex, column, center, center, 7px);
+        width: 100%;
+        color: white;
+        margin-bottom: 20px;
+
+
+        .player {
+            @include flex_config(flex, row, start, center, 8px);
+            border-left:3px solid transparent;
+            border-radius: 4px;
+            width:100%;
+            background-color: $background-2;
+            padding:5px 0 ;
+
+            .container {
+                position: relative;
+                width: 37px;
+                padding-left: 6px;
+
+                .pos-display {
+
+                    display: none;
+                    position: absolute;
+                    top: -25px;
+                    left: 5px;
+                    text-align: center;
+                    width: max-content;
+                    font-size: 13px;
+                    padding: 4px;
+                    border-radius: 2px;
+                    background-color: rgba(0, 0, 0, 0.808);
+                    box-shadow: 0 0 5px black;
+                    z-index: 10;
+
+                }
+
+                .position {
+                    cursor: default;
+                    z-index: 9;
+                    position: relative;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    text-align: center;
+                    background-color: $background-3;
+                    padding: 5px 0;
+                    font-size: 14px
+                }
+            }
+
+            .jersey {
+                width: 8%;
+                text-align: center;
+                background-color: $background-4;
+                padding: 3px 0;
+                font-size: 18px
+            }
+
+            .name {
+                width: max-content;
+                text-align: left;
+                font-size: 14px;
+            }
+
+            .plays {
+                @include flex_config(flex, row, center, center, 6px);
+
+                .play {
+                    @include flex_config(flex, row, center, center, 3px);
+                    font-size: 13px;
+                    color: rgb(160, 160, 160)
+                }
+            }
+
+          
+        }
+    }
+
+
+}
+
+
+
+@media screen and (max-width:800px){
+    .lineups_container {
+
+
+
+        width: 98%;
+
+        .player .name {
+            font-size: 13px !important;
+        }
+
+        .team {
+            @include flex_config(flex, column, center, center, 0);
+        }
+
+    }
+
+
+}

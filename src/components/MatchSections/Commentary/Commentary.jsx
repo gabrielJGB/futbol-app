@@ -1,8 +1,11 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
-import { DataContext } from '../../context/DataContext'
-import Toggle from '../Toggle/Toggle'
-import arrow_in from '../../assets/arrow-in.png'
-import arrow_out from '../../assets/arrow-out.png'
+import React, { useContext, useState } from 'react'
+import { DataContext } from '../../../context/DataContext'
+import Toggle from '../../Toggle/Toggle'
+
+import {
+  arrow_in,
+  arrow_out
+} from '../../../assets'
 
 const Commentary = ({ info }) => {
 
@@ -14,38 +17,49 @@ const Commentary = ({ info }) => {
   const IMG_SIZE = 12
 
 
-  useEffect(() => {
-
-    console.log(info)
-  }, [])
-
-
 
   const get_color_selector = (id) => {
 
     switch (id) {
       case '94':
         return "amarilla"
-      case '':
-        return "roja"
-      case '98':
-        return "gol"
-      case '137':
-        return "gol"
-      case '70':
-        return "gol"
-      case '173':
-        return "gol"
-	case '97':
-        return "gol"
+
       case '93':
         return 'roja'
+
+      case '98':
+      case '137':
+      case '70':
+      case '173':
+      case '97':
+        return 'gol'
+
       default:
-        return ""
+        return ''
 
     }
   }
 
+  const get_selected = () => {
+
+    if (comments_available && key_events_available) {
+
+      if (data.input_checked) {
+        return <Commentary_map comments={info.commentary} />
+      } else {
+        return <Key_events_map key_events={info.keyEvents} />
+      }
+
+    }
+    else if (comments_available) {
+      return <Commentary_map comments={info.commentary} />
+    }
+    else {
+      return <Key_events_map key_events={info.keyEvents} />
+    }
+
+
+  }
 
   const Commentary_map = ({ comments }) => {
     return (
@@ -54,7 +68,7 @@ const Commentary = ({ info }) => {
 
           <div className={`header ${get_color_selector("play" in comment && "type" in comment.play && comment.play.type.id)}`}  >
             <div className="minute"> {comment.time.displayValue} </div>
-            <div className="title">{"play" in comment && "type" in comment.play && comment.play.type.text.replace("Sustitución","Cambio")}</div>
+            <div className="title">{"play" in comment && "type" in comment.play && comment.play.type.text.replace("-","")}</div>
 
             <div className="team">
               {
@@ -117,29 +131,6 @@ const Commentary = ({ info }) => {
       ))
 
     )
-  }
-
-
-
-  const get_selected = () => {
-
-    if (comments_available && key_events_available) {
-
-      if (data.input_checked) {
-        return <Commentary_map comments={info.commentary} />
-      } else {
-        return <Key_events_map key_events={info.keyEvents} />
-      }
-
-    }
-    else if (comments_available) {
-      return <Commentary_map comments={info.commentary} />
-    }
-    else {
-      return <Key_events_map key_events={info.keyEvents} />
-    }
-
-
   }
 
 

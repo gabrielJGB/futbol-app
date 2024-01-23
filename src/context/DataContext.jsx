@@ -10,14 +10,16 @@ export const DataContext = createContext({
     set_selected_date: () => { },
     date: null,
     set_date: () => { },
-    error:null,
-    set_error:()=>{},
-    showing_leagues:null, 
-    set_showing_leagues:()=>{},
-    input_checked:null, 
-    set_input_checked:()=>{},
-    selected_id:null,
-    set_selected_id:()=>{}
+    error: null,
+    set_error: () => { },
+    showing_leagues: null,
+    set_showing_leagues: () => { },
+    input_checked: null,
+    set_input_checked: () => { },
+    selected_id: null,
+    set_selected_id: () => { },
+    show_only_playing:null, 
+    set_show_only_playing:()=>{}
 
 })
 
@@ -27,83 +29,50 @@ export function DataProvider({ children }) {
     const [selected_date, set_selected_date] = useState(false)
     const [date, set_date] = useState(new Date())
     const [showing_leagues, set_showing_leagues] = useState([])
-    const [error,set_error ] = useState(false)
+    const [error, set_error] = useState(false)
     const [input_checked, set_input_checked] = useState(true)
-    const [selected_id,set_selected_id] = useState(0)
+    const [selected_id, set_selected_id] = useState(0)
+    const [show_only_playing, set_show_only_playing] = useState(false)
 
-    let interval = null
-    
-    const req = {  cache: 'no-store' }
-    
+    const req = { cache: 'no-store' }
 
-    
     const fetch_date_events = () => {
-        let num =  "&=" + new Date().getTime()
-        let link = "https://site.web.api.espn.com/apis/v2/scoreboard/header?sport=soccer&lang=es&region=ar&dates=" + format_date(date) + num
+
+        let link = `https://site.web.api.espn.com/apis/v2/scoreboard/header?sport=soccer&lang=es&region=ar&dates=${format_date(date)}&=${new Date().getTime()}`
 
         fetch_json(link, req)
             .then(resp => {
-                // set_leagues_id(resp.sports[0].leagues.map(league=>league.id))
-                // set_leagues_info(resp.sports[0].leagues.map(league => ({"name":league.shortName,"id":league.id})))
                 set_leagues(resp.sports[0].leagues)
-                if(!is_match_in_play((resp.sports[0].leagues)) ){
-                    clearInterval(interval)
-                }
+                console.log(is_match_in_play(resp))
+                
+                
 
             })
-            .catch(error=>set_error(error))
+            .catch(error => set_error(error))
             .finally(() => set_loading(false))
 
     }
 
 
-    /*
-
-        Carga la pagina
-        Fetch inmediato con la fecha de hoy
-        Seteo intervalo 
-
-        Cambia de fecha
-        Limpio intervalo
-        Fetch fecha seleccionada
-        Verifico si hay partidos en juego
-            Si hay, no hago nada
-            Si no hay, limpio el intervalo
-
-        *** Setear el link en un state ***
-        
-
-
-
-    */
-
-
     useEffect(() => {
         set_loading(true)
         fetch_date_events()
+        console.log(leagues)
 
     }, [date])
 
 
-
-    //  ||
-
-
-    // useEffect(() => {
-    //     fetch_date_events()
-    // }, [])
-
-useEffect(() => {
-           
+    useEffect(() => {
 
 
-    // fetch_date_events()
-    // interval = setInterval(() => {
-    //     fetch_date_events()
-    // }, 10000);
+
+        // fetch_date_events()
+        // interval = setInterval(() => {
+        //     fetch_date_events()
+        // }, 10000);
 
 
-}, [])
+    }, [])
 
 
 
@@ -111,7 +80,7 @@ useEffect(() => {
     // useEffect(() => {
     //     if(interval != null)
     //         clearInterval(interval)
- 
+
 
     // }, [date])
 
@@ -147,13 +116,8 @@ useEffect(() => {
         error,
         showing_leagues, set_showing_leagues,
         input_checked, set_input_checked,
-        selected_id,set_selected_id
-        
-    
-
-
-
-
+        selected_id, set_selected_id,
+        show_only_playing, set_show_only_playing
     }
 
     return (
