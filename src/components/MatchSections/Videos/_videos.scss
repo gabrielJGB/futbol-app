@@ -1,5 +1,5 @@
 .videos_container {
-    @include flex_config(flex, column, center, center, 4px);
+    @include flex_config(flex, column-reverse, center, center, 4px);
 
     .video {
         margin: 20px 0;

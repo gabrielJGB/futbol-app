@@ -15,7 +15,7 @@ const Navigation = (props) => {
       let selected = new Date(data.date)
       set_previous_date(selected.setDate(selected.getDate() - 1))
       set_next_date(selected.setDate(selected.getDate() + 2))
-      
+      data.set_show_only_playing(false)
     }
 
   }, [data.date])
@@ -23,7 +23,7 @@ const Navigation = (props) => {
 
   return (
     <div className='navigation_container'>
-      <div className="navigation_date-input">
+      {/* <div className="navigation_date-input">
         <label htmlFor="day">Día</label>
         <input className='day' type="number" placeholder='DD' max={32}/>
 
@@ -36,7 +36,7 @@ const Navigation = (props) => {
           className='date-btn'
           onClick={()=>{}} 
         >Consultar</button>
-      </div>
+      </div> */}
 
       <div className="navigation_main">
         <div className="left"

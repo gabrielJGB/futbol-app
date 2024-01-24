@@ -53,9 +53,30 @@ const is_playing = (elem) => {
 
 }
 
+
+const match_active = objeto => {
+
+  if (objeto.hasOwnProperty("state") && objeto["state"] === "in") {
+      return true;
+  }
+
+  for (let propiedad in objeto) {
+      if (objeto[propiedad] !== null && typeof objeto[propiedad] === "object") {
+          let resultado = match_active(objeto[propiedad], "state");
+          if (resultado) {
+              return true;
+          }
+      }
+  }
+
+  return false;
+}
+
+
 export{
     get_status,
-    is_playing
+    is_playing,
+    match_active
 }
 
 

@@ -22,6 +22,8 @@ const Config = () => {
   }, [])
 
 
+
+
   return (
 
     <div className="config_container">
@@ -39,6 +41,10 @@ const Config = () => {
         }
 
       </div>
+
+      {/* <button 
+      style={{backgroundColor:(data.is_active?"lime":"red"),border:0}}
+      onClick={()=> data.set_is_active(prev=>!prev) }>{data.is_active?"ON":"OFF"}</button> */}
 
       {/* {
         get_time_selected(data.date) == "Hoy" &&

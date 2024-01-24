@@ -4,13 +4,16 @@
     width: -webkit-fill-available;
     // border-radius: 3px;
     // border:solid 1px  $background-6;
-    margin:0 1px 1px 1px;
+    margin: 0 1px 1px 1px;
     background-color: $background-2;
+    // border: solid 1px transparent;
     padding-bottom: 3px;
 
     &:hover {
-        transition: all 0.2s;
-        background-color: $background-1;
+        transition: 0.3s all;
+        // border: solid 1px $background-7;
+        background-color: $background-5;
+        
         cursor: pointer
     }
 
@@ -49,27 +52,53 @@
 
             margin-top: 10px;
             font-size: 30px;
-            .winner{
-                color:#8cffd1;
+
+            .winner {
+                color: #8cffd1;
             }
         }
-        .shootout{
+
+        .shootout {
             text-align: center;
         }
 
         .status {
             margin: 2px auto;
             background-color: rgb(20, 20, 20);
-            color:rgb(231, 231, 231);
+            color: rgb(231, 231, 231);
             width: max-content;
             padding: 2px 4px;
-            border-radius: 4px;
+            border-radius: 3px;
             font-size: 15px;
         }
 
         .playing {
             background-color: rgb(163, 0, 0);
+            animation: score 0.8s alternate infinite;
+            border:solid 1px ;
+            border-color:white
         }
+        @keyframes score {
+            0% {
+                
+                border-color: rgb(163, 0, 0);
+            }
+
+            100% {
+                
+                border-color: rgb(255, 27, 27);
+            }
+        }
+        // @keyframes score {
+        //     0% {
+        //         background-color: rgb(163, 0, 0);
+        //     }
+
+        //     100% {
+        //         background-color: rgb(119, 23, 23);
+        //     }
+        // }
+
     }
 }
 

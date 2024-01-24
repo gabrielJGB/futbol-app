@@ -1,31 +1,15 @@
 import { useContext, useEffect } from 'react';
 import { DataContext } from '../../context/DataContext';
+import { match_active } from '../../utils/match';
 import EventCard from '../EventCard/EventCard'
 
 const LeagueEvents = (props) => {
   const data = useContext(DataContext)
 
-  const is_match_in_play = objeto => {
-
-    if (objeto.hasOwnProperty("state") && objeto["state"] === "in") {
-        return true;
-    }
-
-    for (let propiedad in objeto) {
-        if (objeto[propiedad] !== null && typeof objeto[propiedad] === "object") {
-            let resultado = is_match_in_play(objeto[propiedad], "state");
-            if (resultado) {
-                return true;
-            }
-        }
-    }
-
-    return false;
-}
-
+ 
   const get_display = ()=>{
       if(data.show_only_playing){
-        return is_match_in_play(props.league)?"":"none"
+        return match_active(props.league)?"":"none"
       }else{
         return ""
       }
