@@ -4,7 +4,7 @@
     width: 100%;
 
     .calendar {
-        
+
         cursor: pointer;
 
         input {
@@ -51,4 +51,14 @@
 }
 
 
-
+@media screen and (max-width:800px) {
+    .config_container {
+        .calendar {
+            button {
+                &:hover {
+                    background-color: $background-3;
+                }
+            }
+        }
+    }
+}

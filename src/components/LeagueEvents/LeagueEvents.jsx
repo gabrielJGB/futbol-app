@@ -5,6 +5,7 @@ import EventCard from '../EventCard/EventCard'
 
 const LeagueEvents = (props) => {
   const data = useContext(DataContext)
+  const IMG_SIZE_1 = 27
 
  
   const get_display = ()=>{
@@ -15,12 +16,25 @@ const LeagueEvents = (props) => {
       }
   }
   
-  
+  const get_flag = ()=>{
+    const slug = props.league.slug.slice(0,3)
+    const arr = ['fif','afc','clu']
+
+    if(arr.includes(slug)){
+      return (<div></div>)
+    }
+
+    return (
+      <img src={`https://a.espncdn.com/i/teamlogos/countries/500/${props.league.slug.slice(0,3)}.png`} alt="Bandera" width={IMG_SIZE_1} height={IMG_SIZE_1}/>
+    )
+  }
 
   return (
     <div className='league-events_container' style={{display:(get_display())}}>
       <div className="league-header">
-        <div className="league-name">{props.league.name}</div>
+      {get_flag()}
+        <div className="league-name">{props.league.name.replace("Argentine","")}</div>
+        {get_flag()}
       </div>
 
       {

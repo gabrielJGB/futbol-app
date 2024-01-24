@@ -41,8 +41,11 @@ export function DataProvider({ children }) {
     const [is_active, set_is_active] = useState(true)
     const req = { cache: 'no-store' }
     const delay_secs = 10
-    // const leagues_id = ['3934', '2272', '3932', '8207']
-    const leagues_id = []
+
+    //1ElSalvador,1CostaRica, LigaExpMX, UEFAFem, Mineiro, Gaucho, Paulista, Carioca, 2España, 1Guatemala, 2Alemania,CopaHolanda, SerieBITalia, 1Turquia, 2Inglaterra, 1Grecia, 2Francia, CopaAlemania, 1Honduras, WomenFAC, 2Brasil, UEFAFem, 2Colombia, CopaColombia, EspCopaReina, CopaFra,
+
+    const leagues_id = ['3943','4005','3932','19483','10872','2272','8207','2265','3921','3928','3927','3957','3931','3946','3914','3955','3926','3954','3929','20226','4007','19483','3910','8313','20381','3952']
+    // const leagues_id = []
 
 
     const fetch_date_events = () => {
@@ -53,6 +56,7 @@ export function DataProvider({ children }) {
             .then(resp => {
                 set_leagues(resp.sports[0].leagues.filter(league_ => !leagues_id.includes(league_.id)))
                 set_is_active(match_active(resp.sports[0].leagues.filter(league_ => !leagues_id.includes(league_.id))))
+                console.log(resp.sports[0].leagues)
             })
             .catch(error => set_error(error))
             .finally(() => set_loading(false))
@@ -61,6 +65,7 @@ export function DataProvider({ children }) {
     useEffect(() => {
         set_loading(true)
         set_is_active(true)
+        fetch_date_events()
         fetch_date_events()
 
     }, [date])
