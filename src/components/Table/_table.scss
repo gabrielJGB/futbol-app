@@ -1,0 +1,58 @@
+.table{
+    .title {
+        text-align: center;
+        font-size: 16px; 
+        margin-bottom:5px;
+        color: white;
+    }
+
+    table {
+        margin: 0 auto;
+        color: white;
+        width: 100%;
+
+        td {
+            text-align: center;
+            padding:5px 2px;
+            font-size: 15px;
+
+        }
+
+        td:nth-child(1) {
+            
+            padding: 0 4px;
+        }
+
+        td:nth-child(2) {
+            @include flex_config(flex,row,start,center,5px);
+            max-width: 200px;
+            text-align: start;
+            
+            font-size: 14px;
+            
+        }
+
+        tr {
+            background-color: $background-2;
+        }
+
+        th {
+            padding: 3px 0;
+            background-color: rgb(20, 20, 20);
+        }
+
+    }
+
+}
+
+@media screen and (max-width:800px){
+    table{
+        td,th{
+            font-size: 14px;
+        }        
+    }
+
+    .table{
+        width:100%;
+    }
+}

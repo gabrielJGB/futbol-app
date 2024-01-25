@@ -14,12 +14,12 @@ const Match = () => {
     const [playing, set_playing] = useState(false)
     const data = useContext(DataContext)
     const req = { cache: 'no-store' }
-    const delay_secs = 15
+    
     let query = useParams();
     
 
     const fetch_match = () => {
-        data.set_is_active(false)
+        
         let id = query.id
         let link  = `https://site.web.api.espn.com/apis/site/v2/sports/soccer/all/summary?region=ar&lang=es&contentorigin=deportes&event=${id}&=${new Date().getTime()}`
 
@@ -34,11 +34,8 @@ const Match = () => {
     }
 
     useEffect(() => {
-        
         fetch_match()
         fetch_match()
-        
-        
     }, [])
 
 
@@ -46,7 +43,7 @@ const Match = () => {
         let interval;
 
         if (playing) {
-            interval = setInterval(fetch_match, delay_secs * 1000)
+            interval = setInterval(fetch_match, data.delay_secs * 1000)
         }
 
         return () => { if (interval) clearInterval(interval) };

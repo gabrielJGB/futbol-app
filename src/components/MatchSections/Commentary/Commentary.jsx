@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { DataContext } from '../../../context/DataContext'
 import Toggle from '../../Toggle/Toggle'
 
@@ -16,6 +16,10 @@ const Commentary = ({ info }) => {
   const imgs = [arrow_in, arrow_out]
   const IMG_SIZE = 12
 
+  useEffect(() => {
+    console.log(info)
+  }, [])
+  
 
 
   const get_color_selector = (id) => {

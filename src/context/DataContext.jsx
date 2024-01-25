@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { fetch_json } from '../utils/fetch_json'
 import { match_active } from '../utils/match'
 import { format_date, get_time_selected } from '../utils/time'
@@ -23,7 +24,9 @@ export const DataContext = createContext({
     show_only_playing: null,
     set_show_only_playing: () => { },
     is_active: null,
-    set_is_active: () => { }
+    set_is_active: () => { },
+    delay_secs:null, 
+    set_delay_secs:()=>{}
 
 
 })
@@ -40,7 +43,9 @@ export function DataProvider({ children }) {
     const [show_only_playing, set_show_only_playing] = useState(false)
     const [is_active, set_is_active] = useState(true)
     const req = { cache: 'no-store' }
-    const delay_secs = 10
+    const [delay_secs, set_delay_secs] = useState(50)
+    
+    
 
     //1ElSalvador,1CostaRica, LigaExpMX, UEFAFem, Mineiro, Gaucho, Paulista, Carioca, 2España, 1Guatemala, 2Alemania,CopaHolanda, SerieBITalia, 1Turquia, 2Inglaterra, 1Grecia, 2Francia, CopaAlemania, 1Honduras, WomenFAC, 2Brasil, UEFAFem, 2Colombia, CopaColombia, EspCopaReina, CopaFra,
 
@@ -56,7 +61,7 @@ export function DataProvider({ children }) {
             .then(resp => {
                 set_leagues(resp.sports[0].leagues.filter(league_ => !leagues_id.includes(league_.id)))
                 set_is_active(match_active(resp.sports[0].leagues.filter(league_ => !leagues_id.includes(league_.id))))
-                console.log(resp.sports[0].leagues)
+                
             })
             .catch(error => set_error(error))
             .finally(() => set_loading(false))
@@ -66,9 +71,13 @@ export function DataProvider({ children }) {
         set_loading(true)
         set_is_active(true)
         fetch_date_events()
-        fetch_date_events()
+        // fetch_date_events()
 
     }, [date])
+
+
+
+
 
     useEffect(() => {
         let interval;
@@ -94,7 +103,8 @@ export function DataProvider({ children }) {
         input_checked, set_input_checked,
         selected_id, set_selected_id,
         show_only_playing, set_show_only_playing,
-        is_active, set_is_active
+        is_active, set_is_active,
+        delay_secs, set_delay_secs
 
     }
 
