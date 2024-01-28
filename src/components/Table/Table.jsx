@@ -5,6 +5,7 @@ const Table = (props) => {
 
     const img_size = 20;
 
+
     const get_row_color = (color) => {
         switch (color) {
             case "#81D6AC":          // Champions
@@ -58,7 +59,7 @@ const Table = (props) => {
                                 <td>{elem.stats[10].value}</td>
                                 <td>
                                     <img src={elem.team.logos ? elem.team.logos[0]?.href : ""} alt={elem.team.abbreviation} width={img_size} height={img_size} />
-                                    <span>{elem.team.name.trim()} </span>
+                                    <span>{elem.team.shortDisplayName.trim()} </span>
                                 </td>
                                 <td style={{ fontWeight: "bold" }}> {elem.stats[3].value} </td>
                                 <td >{elem.stats[0].value}</td>

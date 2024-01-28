@@ -2,7 +2,7 @@ import React from 'react'
 import { escudo } from '../../../assets'
 
 const Team = (props) => {
-    const IMG_SIZE_1 = 35;
+    const IMG_SIZE_1 = 32;
 
     const get_escudo = (elem) => {
 
@@ -18,7 +18,7 @@ const Team = (props) => {
 
             <div className="team-info">
                 {get_escudo(props.team)}
-                <div className="team-name">{props.team.displayName}</div>
+                <div className="team-name">{props.team.name}</div>
             </div>
 
         </div>

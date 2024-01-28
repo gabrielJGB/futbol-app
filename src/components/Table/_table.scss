@@ -9,6 +9,7 @@
     table {
         margin: 0 auto;
         color: white;
+        border:$background-3;
         width: 100%;
 
         td {
@@ -33,10 +34,13 @@
         }
 
         tr {
+            color:white;
             background-color: $background-2;
+
         }
 
         th {
+            text-align: center;
             padding: 3px 0;
             background-color: rgb(20, 20, 20);
         }

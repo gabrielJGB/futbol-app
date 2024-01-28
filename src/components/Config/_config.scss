@@ -2,19 +2,19 @@
     @include flex_config(flex, row, center, center, 5px);
     padding: 5px 0;
     width: 100%;
-
+    font-size:14px;
     .calendar {
 
         cursor: pointer;
 
         input {
-            padding: 3px 0;
+            padding: 0px 0;
             text-align: center;
         }
 
         button {
             margin-left: 4px;
-            padding: 7px 23px;
+            padding: 2px 23px;
             border: 0;
             cursor: pointer;
             background-color: $background-3;

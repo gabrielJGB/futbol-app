@@ -43,7 +43,7 @@ export function DataProvider({ children }) {
     const [show_only_playing, set_show_only_playing] = useState(false)
     const [is_active, set_is_active] = useState(true)
     const req = { cache: 'no-store' }
-    const [delay_secs, set_delay_secs] = useState(50)
+    const [delay_secs, set_delay_secs] = useState(30)
     
     
 
@@ -71,7 +71,6 @@ export function DataProvider({ children }) {
         set_loading(true)
         set_is_active(true)
         fetch_date_events()
-        // fetch_date_events()
 
     }, [date])
 
@@ -83,6 +82,7 @@ export function DataProvider({ children }) {
         let interval;
 
         if (is_active) {
+            fetch_date_events()
             fetch_date_events()
             interval = setInterval(fetch_date_events, delay_secs * 1000)
         }

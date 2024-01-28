@@ -1,13 +1,14 @@
-.event-card_container {
+.event_container {
 
-    @include flex_config(flex, column, center, center, 0px);
-    width: -webkit-fill-available;
+    @include flex_config(flex, row, center, center, 0px);
+    width: 70%;
     // border-radius: 3px;
     // border:solid 1px  $background-6;
     margin: 0 1px 1px 1px;
     background-color: $background-2;
     // border: solid 1px transparent;
     padding-bottom: 3px;
+    color:white;
     transition: 0.5s all;
     &:hover {
         transition: 0.3s all;
@@ -17,43 +18,33 @@
         
         cursor: pointer
     }
-
-
-    .match-container {
-        @include flex_config(flex, row, space-between, center, 5px);
-        width: -webkit-fill-available;
-
-
-        // margin:0 5px;
-        // padding:5px;
-        // border-radius: 5px;
-    }
-
-
     .team {
         @include flex_config(flex, column, center, center, 0);
         width: 40%;
 
         .team-info {
-            @include flex_config(flex, column, center, center, 3px);
+            @include flex_config(flex, column, center, center, 5px);
 
         }
 
         .team-name {
+            margin-top:3px;
             font-size: 14px;
             text-align: center;
-            line-height: normal;
 
         }
 
     }
 
+
+
+
     .score-container {
 
         .score {
-            @include flex_config(flex, row, center, unset, 6px);
-            
-            margin-top: 5px;
+            @include flex_config(flex, row, center, unset, 10px);
+
+            margin-top: 10px;
             font-size: 30px;
 
             .winner {
@@ -103,11 +94,15 @@
         // }
 
     }
+
 }
 
 
-@media screen and (max-width:800px) {
-    .team-name {
-        font-size: 14px;
+@media screen and (max-width:800px){
+
+    .event_container {
+            width:100%;
+
     }
+
 }

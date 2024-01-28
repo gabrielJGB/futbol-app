@@ -11,7 +11,7 @@ const Tables = ({ info }) => {
 
   return (
 
-    <div className="tables_container">
+    <div className="tables_container_">
 
 
       {

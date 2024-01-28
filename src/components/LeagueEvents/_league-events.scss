@@ -11,7 +11,7 @@
     .league-header {
         @include flex_config(flex, row, space-between, center, 0);
         width: 100%;
-        padding: 3px 0px;
+        padding: 2px 0px;
         transition: all 0.2s;
         cursor: pointer;
         background-color: $background-6;

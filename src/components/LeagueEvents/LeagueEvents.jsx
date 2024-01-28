@@ -10,6 +10,8 @@ const LeagueEvents = (props) => {
   const IMG_SIZE_1 = 27
 
 
+
+
   const get_display = () => {
     if (data.show_only_playing) {
       return match_active(props.league) ? "" : "none"
@@ -27,7 +29,7 @@ const LeagueEvents = (props) => {
     }
 
     return (
-      <img src={`https://a.espncdn.com/i/teamlogos/countries/500/${props.league.slug.slice(0, 3)}.png`} alt="Bandera" width={IMG_SIZE_1} height={IMG_SIZE_1} />
+      <img src={`https://a.espncdn.com/i/teamlogos/countries/500/${props.league.slug.slice(0, 3)}.png`} alt="Bandera" width={IMG_SIZE_1*1} height={IMG_SIZE_1} />
     )
   }
 
@@ -35,7 +37,7 @@ const LeagueEvents = (props) => {
     <div className='league-events_container' style={{ display: (get_display()) }}>
       <div className="league-header"
            onClick={() => { 
-            console.log(props.league.slug)
+            
             navigate(`/league/${(props.league.slug)}`)
            }}
       >

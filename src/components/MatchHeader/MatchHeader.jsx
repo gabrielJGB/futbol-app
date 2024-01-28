@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { red, goal, penal, escudo } from '../../assets'
 import { get_status, is_playing } from '../../utils/match'
 
@@ -6,6 +6,11 @@ const MatchHeader = ({ header_info }) => {
     const IMG_SIZE_1 = 50
     const IMG_SIZE_2 = 10
     const IMG_SIZE_3 = 15
+
+    useEffect(() => {
+      console.log(header_info)
+    }, [])
+    
 
 
     const get_icon = (detail) => {
@@ -35,7 +40,13 @@ const MatchHeader = ({ header_info }) => {
 
     return (
         <div className="match-header">
-            <div className="league-name">{header_info.season.name}</div>
+            <div className="league-name">
+                {
+                    header_info.season.name.replace("Argentine","")
+                }
+            </div>
+
+
             <div className="header-top">
                 <div className="team">
                     {get_escudo(header_info.competitions[0].competitors[0].team)}

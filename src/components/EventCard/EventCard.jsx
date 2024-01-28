@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import Team from './Team/Team'
 import Score from './Score/Score'
@@ -8,6 +8,8 @@ import { DataContext } from '../../context/DataContext';
 const EventCard = (props) => {
   const navigate = useNavigate()  
   const data = useContext(DataContext)
+
+
 
   const get_display = ()=>{
     if(data.show_only_playing){
@@ -26,7 +28,7 @@ const EventCard = (props) => {
 
       <div className="match-container">
         <Team team={props.match.competitors[1]} />
-        <Score score={props.match.competitors} status={props.match.fullStatus} />
+        <Score score={props.match.competitors} status={"fullStatus" in props.match? props.match.fullStatus: props.match.status} />
         <Team team={props.match.competitors[0]} />
       </div>
 
