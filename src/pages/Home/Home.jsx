@@ -5,7 +5,8 @@ import Error from '../../components/Error/Error'
 import LeagueEvents from '../../components/LeagueEvents/LeagueEvents'
 import Navigation from '../../components/Navigation/Navigation'
 import Spinner from '../../components/Spinner/Spinner'
-import LeaguesNames from '../../components/LeagueNames/LeaguesNames'
+
+import LeaguesMenu from '../../components/LeaguesMenu/LeaguesMenu'
 
 import { DataContext } from '../../context/DataContext'
 
@@ -31,6 +32,8 @@ const Home = () => {
           <LeagueEvents key={i} league={league} />
         ))
       }
+
+      <LeaguesMenu />
 
     </div>
   )

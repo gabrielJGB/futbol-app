@@ -41,19 +41,25 @@
 
             width: 100%;
             margin-top: 25px;
-
+            color:white;
+            
+            .date{
+                font-size: 17px;
+                
+            }
+            
             .events-header{
                 @include flex_config(flex, row, space-between, center, 0px);
                 width:70%;
                 margin-bottom: 10px;
-                color:white;
+                color:white ;
                 button{
                     width:48px;
                     height:48px;
                     border:0;
                     cursor: pointer;
                     font-size: 20px;
-                    color:white;
+                    
                     background-color: $background-4;
                     border-radius: 2px;
                     transition: 0.2s all;
@@ -65,11 +71,6 @@
                 }
             }
 
-            .date{
-                color:white;
-                font-size: 17px;
-                margin-bottom: 3px;
-            }
 
         }
     }

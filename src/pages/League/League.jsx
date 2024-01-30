@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import Event from '../../components/Event/Event'
 import Spinner from '../../components/Spinner/Spinner'
 import Table from '../../components/Table/Table'
-import { convertTimestampToDate, format_main_date } from '../../utils/time'
+import {get_time_selected, format_main_date } from '../../utils/time'
 
 const League = () => {
   const { league_code } = useParams()
@@ -39,7 +39,7 @@ const League = () => {
 
     // Construye y devuelve la nueva cadena de fecha
     return `${año}-${mes}-${día}`;
-}
+  }
 
 
 
@@ -67,7 +67,7 @@ const League = () => {
       .then(parsed => {
         console.log(parsed)
         set_calendar(parsed.scores[0].leagues[0].calendar.map(c => (c.split("T")[0].replaceAll("-", ""))))
-    })
+      })
       .then(() => set_date(calendar[index]))
       .catch(error => console.log(error))
       .finally(() => set_loading(false))
@@ -78,15 +78,37 @@ const League = () => {
 
   const fetch_events = () => {
     // let link = `https://site.web.api.espn.com/apis/v2/sports/soccer/${league_code}/standings?lang=es&region=ar?${date}`
-    let link = `https://site.web.api.espn.com/apis/site/v2/sports/soccer/scorepanel?league=${league_code}&region=ar&lang=es&contentorigin=deportes&limit=250`
+    let link = `https://site.web.api.espn.com/apis/site/v2/sports/soccer/scorepanel?league=${league_code}&region=ar&lang=es&contentorigin=deportes&limit=250&dates=${get_dates(new Date())}`
 
     fetch(link)
       .then(resp => resp.json())
-      .then(parsed => set_events(parsed))
+      .then(parsed => {
+        set_events(parsed)
+        console.log(parsed)
+      })
       .catch(error => console.log(error))
       .finally(() => set_loading(false))
 
   }
+
+
+  const get_dates = (date) => {
+
+    const pad = (number) => (number < 10 ? `0${number}` : number);
+
+
+    const twoDaysBefore = new Date(date);
+    twoDaysBefore.setDate(date.getDate() - 2);
+
+    const eightDaysAfter = new Date(date);
+    eightDaysAfter.setDate(date.getDate() + 8);
+
+
+    const format = (d) => `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}`;
+
+
+    return `${format(twoDaysBefore)}-${format(eightDaysAfter)}`;
+  };
 
 
 
@@ -94,11 +116,33 @@ const League = () => {
   useEffect(() => {
     fetch_tables()
     fetch_events()
-    
+
   }, [])
 
+  let match_date  = ""
 
 
+  const get_date = (date) => {
+      const formated_date = get_time_selected(date)
+      
+
+      if (formated_date != match_date){
+        match_date = formated_date
+
+      
+        return formated_date
+      }
+  }
+
+  const translate_slug = (slug)=>{
+  
+    switch(slug){
+      case "group-stage":
+          return "FASE DE GRUPOS"
+
+    }
+
+  }
 
 
   if (loading)
@@ -114,7 +158,12 @@ const League = () => {
 
       <div className="content">
 
-        {"children" in tables && tables.children.length != 0 &&
+
+
+      {"children" in tables && tables.children.length != 0 &&
+
+      
+
           <div
             className={`tables ${"children" in tables && tables.children.length === 1 ? "container" : ""}`}>
             {
@@ -126,42 +175,37 @@ const League = () => {
         }
 
 
+
         <div className="events">
-
-          {/* {
-            events &&
-            events.scores[0]?.leagues[0]?.calendar[0]?.entries?.map((entry,i)=>(
-              <div key={i}>
-                {entry.label}
-                {console.log(entry)}
-              </div>
-            ))
-          } */}
-
-
           {
             events &&
-            <div className="events-header">
-              {/* <button onClick={() => { set_index(prev => prev - 1) }}>{"<"}</button>
-              <div>{format_main_date(_format_date(date))}</div>
-              <button onClick={() => { set_index(prev => prev + 1) }}>{">"}</button> */}
+              <div className="events-header">
+                {/* <button onClick={() => { set_index(prev => prev - 1) }}>{"<"}</button>
+                <div>{format_main_date(_format_date(date))}</div>
+                <button onClick={() => { set_index(prev => prev + 1) }}>{">"}</button> */}
+                
+                  <div></div>
+                  <h3> {translate_slug(events.scores[0].season.slug)}</h3>
+                  <div></div>
 
-              <div></div>
-              <div>Partidos recientes</div>
-              <div></div>
-            </div>
+              </div>
           }
 
           {
             events &&
             events.scores[0].events.map((elem, i) => (
-              <Event match={elem} key={i} />
-
+              <>
+                <h3 className="date">{get_date(elem.date)}</h3>
+                <Event match={elem} key={i} />
+              </>
             ))
           }
 
 
         </div>
+
+
+
 
       </div>
     </div>

@@ -11,7 +11,6 @@ const LeagueEvents = (props) => {
 
 
 
-
   const get_display = () => {
     if (data.show_only_playing) {
       return match_active(props.league) ? "" : "none"
@@ -22,7 +21,7 @@ const LeagueEvents = (props) => {
 
   const get_flag = () => {
     const slug = props.league.slug.slice(0, 3)
-    const arr = ['fif', 'afc', 'clu']
+    const arr = ['fif', 'afc', 'clu','con','uef']
 
     if (arr.includes(slug)) {
       return (<div></div>)

@@ -34,7 +34,7 @@ const Table = (props) => {
 
 
         <div className='table'>
-            <div className='title'> {props.table.name}</div>
+            <div className='title'> {props.table.name.replace("2024 Copa de la Liga Profesional - Group", "Grupo ")}</div>
             <table>
                 <tbody>
                     <tr>

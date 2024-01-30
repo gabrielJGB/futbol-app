@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { escudo } from '../../../assets'
 import { format_game_date} from '../../../utils/time'
 const IMG_SIZE = 29
 
 
+
 const History = ({ info }) => {
     const navigate = useNavigate()
-
+    
+    useEffect(() => {
+      console.log(info)
+    }, [])
+    
     const HistoryMatch = ({ match_info }) => {
         let home = {}
         let away = {}
@@ -34,12 +39,12 @@ const History = ({ info }) => {
                 }}
             >
                 <div className="header">
-                    <span>{format_game_date(match_info.gameDate)}</span> - <span>{match_info.leagueName}</span>
+                    <span>{format_game_date(match_info.gameDate)}</span> - <span>{match_info.leagueName.replace("Argentine","")}</span>
                 </div>
                 <div className="container">
                     <div className="team home">
 
-                        <div className="name">{home.displayName}</div>
+                        <div className="name">{home.abbreviation}</div>
                         <img src={"logo" in home ? home.logo : escudo} alt="Escudo" width={IMG_SIZE} height={IMG_SIZE} />
                     </div>
                     <div className="score">
@@ -49,7 +54,7 @@ const History = ({ info }) => {
                     </div>
                     <div className="team away">
                         <img src={"logo" in away ? away.logo : escudo} alt="Escudo" width={IMG_SIZE} height={IMG_SIZE} />
-                        <div className="name">{away.displayName}</div>
+                        <div className="name">{away.abbreviation}</div>
                     </div>
                 </div>
 

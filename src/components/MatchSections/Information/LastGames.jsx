@@ -41,7 +41,7 @@ const LastGames = ({info}) => {
                                     <div className="top">
 
 
-                                        <div className="title">{format_game_date(game.gameDate)} - {game.leagueName}</div>
+                                        <div className="title">{format_game_date(game.gameDate)} - {game.leagueName.replace("Argentine","")}</div>
                                     </div>
                                     <div className="bottom">
                                         <div className="vsAt">{(game.atVs === "en" ? "(V)" : "(L)")}</div>
