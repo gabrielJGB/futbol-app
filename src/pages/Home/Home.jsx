@@ -6,7 +6,7 @@ import LeagueEvents from '../../components/LeagueEvents/LeagueEvents'
 import Navigation from '../../components/Navigation/Navigation'
 import Spinner from '../../components/Spinner/Spinner'
 
-import LeaguesMenu from '../../components/LeaguesMenu/LeaguesMenu'
+
 
 import { DataContext } from '../../context/DataContext'
 
@@ -33,7 +33,7 @@ const Home = () => {
         ))
       }
 
-      <LeaguesMenu />
+      
 
     </div>
   )

@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { escudo } from '../../assets/index'
 import { get_status, is_playing } from '../../utils/match'
 
 
 const Event = ({ match }) => {
     const IMG_SIZE_1 = 30
+    const navigate = useNavigate()
 
     const get_escudo = (elem) => {
 
@@ -18,7 +20,10 @@ const Event = ({ match }) => {
 
 
     return (
-        <div className="event_container">
+        <div 
+            className="event_container"
+            onClick={() => navigate(`/match/${match.id}`)} 
+        >
             <div className="team home">
                 {get_escudo(match.competitions[0].competitors[0].team)}
                 <div className="team-name">{match.competitions[0].competitors[0].team.shortDisplayName}</div>

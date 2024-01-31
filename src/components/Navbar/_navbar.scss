@@ -1,15 +1,27 @@
 .navbar_container{
     @include flex_config(flex,row,space-between,center,0);
     
-    position:relative;
-    z-index: 10;
+    position:sticky;
+    top:0;
+    z-index: 18;
     color:$color-2;
     background-color: $background-3;
-    padding:10px 20px;
+    padding:10px ;
     font-size: 17px;
     .header{
         @include flex_config(flex,row,space-between,center,0);
         width:100%;
+        .left{
+            @include flex_config(flex,row,center,center,12px);
+            .menu-icon{
+                border:0;
+                background-color: transparent;
+                filter:invert(1);
+                padding:2px;
+                cursor: pointer;
+                outline:none
+            }
+        }
         .title{ 
             cursor: pointer;
             padding:5px 0;

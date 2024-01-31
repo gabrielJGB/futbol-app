@@ -9,10 +9,7 @@ const IMG_SIZE = 29
 const History = ({ info }) => {
     const navigate = useNavigate()
     
-    useEffect(() => {
-      console.log(info)
-    }, [])
-    
+
     const HistoryMatch = ({ match_info }) => {
         let home = {}
         let away = {}

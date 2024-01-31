@@ -7,9 +7,6 @@ const MatchHeader = ({ header_info }) => {
     const IMG_SIZE_2 = 10
     const IMG_SIZE_3 = 15
 
-    useEffect(() => {
-      console.log(header_info)
-    }, [])
     
 
 

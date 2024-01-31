@@ -1,10 +1,10 @@
 
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import Event from '../../components/Event/Event'
 import Spinner from '../../components/Spinner/Spinner'
 import Table from '../../components/Table/Table'
-import {get_time_selected, format_main_date } from '../../utils/time'
+import { get_time_selected, format_main_date } from '../../utils/time'
 
 const League = () => {
   const { league_code } = useParams()
@@ -14,14 +14,7 @@ const League = () => {
   const [calendar, set_calendar] = useState(false)
   const [date, set_date] = useState(false)
   const [index, set_index] = useState(0)
-
-
-  useEffect(() => {
-
-    if (events)
-      console.log(events)
-
-  }, [events])
+  
 
 
 
@@ -119,26 +112,26 @@ const League = () => {
 
   }, [])
 
-  let match_date  = ""
+  let match_date = ""
 
 
   const get_date = (date) => {
-      const formated_date = get_time_selected(date)
-      
+    const formated_date = get_time_selected(date)
 
-      if (formated_date != match_date){
-        match_date = formated_date
 
-      
-        return formated_date
-      }
+    if (formated_date != match_date) {
+      match_date = formated_date
+
+
+      return formated_date
+    }
   }
 
-  const translate_slug = (slug)=>{
-  
-    switch(slug){
+  const translate_slug = (slug) => {
+
+    switch (slug) {
       case "group-stage":
-          return "FASE DE GRUPOS"
+        return "FASE DE GRUPOS"
 
     }
 
@@ -160,9 +153,9 @@ const League = () => {
 
 
 
-      {"children" in tables && tables.children.length != 0 &&
+        {"children" in tables && tables.children.length != 0 &&
 
-      
+
 
           <div
             className={`tables ${"children" in tables && tables.children.length === 1 ? "container" : ""}`}>
@@ -179,16 +172,16 @@ const League = () => {
         <div className="events">
           {
             events &&
-              <div className="events-header">
-                {/* <button onClick={() => { set_index(prev => prev - 1) }}>{"<"}</button>
+            <div className="events-header">
+              {/* <button onClick={() => { set_index(prev => prev - 1) }}>{"<"}</button>
                 <div>{format_main_date(_format_date(date))}</div>
                 <button onClick={() => { set_index(prev => prev + 1) }}>{">"}</button> */}
-                
-                  <div></div>
-                  <h3> {translate_slug(events.scores[0].season.slug)}</h3>
-                  <div></div>
 
-              </div>
+              <div></div>
+              <h3> {translate_slug(events.scores[0].leagues[0].slug)}</h3>
+              <div></div>
+
+            </div>
           }
 
           {
@@ -196,7 +189,10 @@ const League = () => {
             events.scores[0].events.map((elem, i) => (
               <>
                 <h3 className="date">{get_date(elem.date)}</h3>
-                <Event match={elem} key={i} />
+                <Event
+
+                  match={elem}
+                  key={i} />
               </>
             ))
           }

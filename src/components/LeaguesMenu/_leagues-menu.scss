@@ -1,25 +1,38 @@
 .leagues_menu-container{
     @include flex_config(flex,column,start,center,1px);
-    z-index:12;
+    z-index:17;
     position:fixed;
-    left:0; 
+    left:-200px; 
     bottom:0;
-    height: 92vh;
-    width:170px;
+    height: 92.1vh;
+    width:200px;
     background-color:$background-3;
+    box-shadow: 0 0 4px black;
+    color:white;
     overflow-y: scroll;
+    transition: all 0.4s;
 
     .league
     {
-        text-align:center;
+        @include flex_config(flex,row,start,center,10px);
+        padding:10px 0;
         font-size:14px;
         width:100%;
-        padding:8px 0;
         background-color:$background-2;
         cursor:pointer;
+        img{
+            margin-left:10px
+        }
         &:hover{
             background-color:$background-4;
         }
+    }
+    h3{
+        text-align: center;
+        background-color: white;
+        color:$background-3;
+        width:100%;
+        padding:4px 0 ;
     }
     
 

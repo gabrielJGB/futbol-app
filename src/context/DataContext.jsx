@@ -26,7 +26,9 @@ export const DataContext = createContext({
     is_active: null,
     set_is_active: () => { },
     delay_secs:null, 
-    set_delay_secs:()=>{}
+    set_delay_secs:()=>{},
+    open_menu:null, 
+    set_open_menu:()=>{}
 
 
 })
@@ -42,15 +44,16 @@ export function DataProvider({ children }) {
     const [selected_id, set_selected_id] = useState(0)
     const [show_only_playing, set_show_only_playing] = useState(false)
     const [is_active, set_is_active] = useState(true)
-    const req = { cache: 'no-store' }
     const [delay_secs, set_delay_secs] = useState(30)
+    const [open_menu, set_open_menu] = useState(false)
+    const req = { cache: 'no-store' }
     
     
 
     //1ElSalvador,1CostaRica, LigaExpMX, UEFAFem, Mineiro, Gaucho, Paulista, Carioca, 2España, 1Guatemala, 2Alemania,CopaHolanda, SerieBITalia, 1Turquia, 2Inglaterra, 1Grecia, 2Francia, CopaAlemania, 1Honduras, WomenFAC, 2Brasil, UEFAFem, 2Colombia, CopaColombia, EspCopaReina, CopaFra,
 
-    const leagues_id = ['3943','4005','3932','19483','10872','2272','8207','2265','3921','3928','3927','3957','3931','3946','3914','3955','3926','3954','3929','20226','4007','19483','3910','8313','20381','3952']
-    // const leagues_id = []
+    // const leagues_id = ['3943','4005','3932','19483','10872','2272','8207','2265','3921','3928','3927','3957','3931','3946','3914','3955','3926','3954','3929','20226','4007','19483','3910','8313','20381','3952']
+    const leagues_id = []
 
 
     const fetch_date_events = () => {
@@ -104,7 +107,8 @@ export function DataProvider({ children }) {
         selected_id, set_selected_id,
         show_only_playing, set_show_only_playing,
         is_active, set_is_active,
-        delay_secs, set_delay_secs
+        delay_secs, set_delay_secs,
+        open_menu, set_open_menu
 
     }
 

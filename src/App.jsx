@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import DataProvider from './context/DataContext'
+import LeaguesMenu from './components/LeaguesMenu/LeaguesMenu'
 
 import Home from './pages/Home/Home'
 import Layout from './pages/Layout'
@@ -22,7 +23,9 @@ const App = () => {
               
           </Route>
         </Routes>
+<LeaguesMenu />
       </BrowserRouter>
+      
     </DataProvider>
 
 

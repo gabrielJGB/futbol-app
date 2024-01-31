@@ -36,6 +36,7 @@ const Match = () => {
     useEffect(() => {
         fetch_match()
         fetch_match()
+        
     }, [])
 
 

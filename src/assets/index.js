@@ -12,6 +12,7 @@ import own_goal from './own-goal.png';
 import penal from './penal.png';
 import red from './red.png';
 import yellow from './yellow.png';
+import menu_icon from './menu-icon.png'
 
 export {
     arrow_in,
@@ -27,5 +28,6 @@ export {
     own_goal,
     penal,
     red,
-    yellow
+    yellow,
+    menu_icon
 }
