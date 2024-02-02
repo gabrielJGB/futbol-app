@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import Event from '../../components/Event/Event'
 import Spinner from '../../components/Spinner/Spinner'
 import Table from '../../components/Table/Table'
-import { get_time_selected, format_main_date } from '../../utils/time'
+import { get_time_selected, format_main_date, format_time } from '../../utils/time'
 
 const League = () => {
   const { league_code } = useParams()
@@ -14,7 +14,7 @@ const League = () => {
   const [calendar, set_calendar] = useState(false)
   const [date, set_date] = useState(false)
   const [index, set_index] = useState(0)
-  
+
 
 
 
@@ -24,15 +24,15 @@ const League = () => {
     return parsed
   }
 
-  function _format_date(fechaStr) {
+  // function _format_date(fechaStr) {
 
-    let año = fechaStr.substring(0, 4);
-    let mes = fechaStr.substring(4, 6);
-    let día = fechaStr.substring(6, 8);
+  //   let año = fechaStr.substring(0, 4);
+  //   let mes = fechaStr.substring(4, 6);
+  //   let día = fechaStr.substring(6, 8);
 
-    // Construye y devuelve la nueva cadena de fecha
-    return `${año}-${mes}-${día}`;
-  }
+  //   // Construye y devuelve la nueva cadena de fecha
+  //   return `${año}-${mes}-${día}`;
+  // }
 
 
 
@@ -94,7 +94,7 @@ const League = () => {
     twoDaysBefore.setDate(date.getDate() - 2);
 
     const eightDaysAfter = new Date(date);
-    eightDaysAfter.setDate(date.getDate() + 8);
+    eightDaysAfter.setDate(date.getDate() + 28);
 
 
     const format = (d) => `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}`;
@@ -112,30 +112,89 @@ const League = () => {
 
   }, [])
 
-  let match_date = ""
-
-
-  const get_date = (date) => {
-    const formated_date = get_time_selected(date)
-
-
-    if (formated_date != match_date) {
-      match_date = formated_date
-
-
-      return formated_date
-    }
-  }
+  
 
   const translate_slug = (slug) => {
 
+    
     switch (slug) {
       case "group-stage":
         return "FASE DE GRUPOS"
-
+      case "semifinals":
+        return "Semifinales"
+      default:
+          return "Calendario"
     }
 
+
   }
+
+  let last_date = ''
+
+  const get_match_date = (date_string) => {
+
+    let formated_date = _format_date(date_string)
+    
+
+    if(last_date != formated_date.date){
+      last_date = formated_date.date
+      return  <h3 className="date">{`${formated_date.day_of_week} ${formated_date.day} de ${formated_date.month}`}</h3>
+    }
+
+
+
+    // console.log(last_date,formated_date.date)
+
+    // if(last_date != formated_date.date)
+    //   last_date = formated_date.date
+    // else
+    //   return (<h3 className="date">{formated_date.date}</h3>)
+
+  }
+
+  const _format_date = (date_string) => {
+
+    
+
+    const days = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
+    const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+    let x = date_string.replace("Z", "")
+
+    let date = x.split("T")[0]
+    let time = x.split("T")[1]
+
+    let day = date.split("-")[2]
+    let month = date.split("-")[1]
+    let year = date.split("-")[0]
+
+    let hours = time.split(":")[0]
+    let minutes = time.split(":")[1]
+
+    let new_date = new Date()
+
+    new_date.setYear(year)
+    new_date.setMonth(month -1)
+    new_date.setDate(day)
+    new_date.setHours(hours)
+    new_date.setMinutes(minutes)
+
+    new_date.setHours(new_date.getHours() - 3)
+
+
+
+    let obj ={
+      "date": `${new_date.getDate()}/${new_date.getMonth() }`,
+      "day_of_week": days[new_date.getDay()],
+      "month":months[new_date.getMonth()],
+      "day": new_date.getDate(),
+      "hours": new_date.getHours(),
+      "minutes": new_date.getMinutes()
+    }
+
+    return obj
+
+  }
+
 
 
   if (loading)
@@ -178,7 +237,7 @@ const League = () => {
                 <button onClick={() => { set_index(prev => prev + 1) }}>{">"}</button> */}
 
               <div></div>
-              <h3> {translate_slug(events.scores[0].leagues[0].slug)}</h3>
+              <h3> {translate_slug(events.scores[0].season.slug)}</h3>
               <div></div>
 
             </div>
@@ -188,9 +247,10 @@ const League = () => {
             events &&
             events.scores[0].events.map((elem, i) => (
               <>
-                <h3 className="date">{get_date(elem.date)}</h3>
+                {
+                  get_match_date(elem.date)
+                }
                 <Event
-
                   match={elem}
                   key={i} />
               </>

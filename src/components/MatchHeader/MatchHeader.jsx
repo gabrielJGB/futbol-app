@@ -67,6 +67,7 @@ const MatchHeader = ({ header_info }) => {
 
                     <div className={`status ${is_playing(header_info.competitions[0].status) && "playing"}`}>
                         {get_status(header_info.competitions[0].status)}
+                        
                     </div>
                 </div>
 

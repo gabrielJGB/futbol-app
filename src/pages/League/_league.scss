@@ -44,8 +44,13 @@
             color:white;
             
             .date{
+                width: 70%;
+                text-align: center;
+                padding:10px 0;
                 font-size: 17px;
-                
+                background-color: $background-4;
+                color:white;
+
             }
             
             .events-header{
@@ -106,6 +111,9 @@
             margin-top: 0 !important;
             width: 100%;
             .events-header{
+                width:100% !important;
+            }
+            .date{
                 width:100% !important;
             }
 

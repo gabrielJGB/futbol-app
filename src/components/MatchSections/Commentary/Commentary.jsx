@@ -19,7 +19,7 @@ const Commentary = ({ info }) => {
   useEffect(() => {
     console.log(info)
   }, [])
-  
+
 
 
   const get_color_selector = (id) => {
@@ -30,7 +30,7 @@ const Commentary = ({ info }) => {
 
       case '93':
         return 'roja'
-
+      case '138':
       case '98':
       case '137':
       case '70':
@@ -65,6 +65,28 @@ const Commentary = ({ info }) => {
 
   }
 
+  const translate_text = (text) => {
+
+    switch (text) {
+      case "Goal - Free-kick":
+        return "Gol de tiro libre"
+
+      case "Gol, anotación":
+        return "Gol"
+      case "Tiro a la meta":
+        return "Tiro al arco"
+      case "Balón mano":
+        return "Mano"
+      case "Fuera de lugar":
+        return "Fuera de juego"
+      case "Penal - Anotado":
+        return "Penal convertido"
+      default:
+        return text
+    }
+
+  }
+
   const Commentary_map = ({ comments }) => {
     return (
       comments?.map((comment, i) => (
@@ -72,17 +94,8 @@ const Commentary = ({ info }) => {
 
           <div className={`header ${get_color_selector("play" in comment && "type" in comment.play && comment.play.type.id)}`}  >
             <div className="minute"> {comment.time.displayValue} </div>
-            <div className="title">{"play" in comment && "type" in comment.play && comment.play.type.text.replace("-","")}</div>
+            <div className="title">{"play" in comment && "type" in comment.play && translate_text(comment.play.type.text)}</div>
 
-            <div className="team">
-              {
-                "play" in comment && "team" in comment.play &&
-                <>
-                  <span>-</span>
-                  <span> {comment.play.team.displayName}</span>
-                </>
-              }
-            </div>
           </div>
 
           <div className='comment'>
@@ -117,7 +130,7 @@ const Commentary = ({ info }) => {
             <div className="title">{comment.type.text}</div>
           </div>
 
-          <div className='comment'> {"text" in comment ? comment.text : comment.type.text} </div>
+          <div className='comment'> {"text" in comment ? comment.text : translate_text(comment.type.text)} </div>
 
           {
             comment.type.id === "76" &&
